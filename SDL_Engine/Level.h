@@ -19,10 +19,9 @@ class Level
 public:
 	Level();
 	~Level();
-	void ProcessCollisions();
 	void Update(float deltaTime);
 	void Render();
 
 	std::vector<GameObject*> GetObjects() { return m_objects; }
-	void AddObject(GameObject* object);
+	void AddObject(int type);
 };

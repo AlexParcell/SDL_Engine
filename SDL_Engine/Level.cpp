@@ -8,8 +8,8 @@
 
 Level::Level()
 {
-	AddObject(new GameObject(false));
-	AddObject(new GameObject(true));
+	AddObject(Obj_Rock);
+	AddObject(Obj_Player);
 	SDL_Color textColor = { 0, 0, 255, 0 };
 	m_text = new Text("Hi!!!", textColor);
 
@@ -68,7 +68,9 @@ void Level::Render()
 	m_text->Render();
 }
 
-void Level::AddObject(GameObject* object)
+void Level::AddObject(int type)
 {
-	m_objects.push_back(object);
+	GameObject* newObject = new GameObject(type);
+
+	m_objects.push_back(newObject);
 }

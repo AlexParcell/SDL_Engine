@@ -6,7 +6,7 @@
 
 #include <iostream>
 
-GameObject::GameObject(bool playerControl, int collisionType)
+GameObject::GameObject(int type)
 	: m_sprite(nullptr),
 	m_position(0, 0),
 	m_size(48, 48),
@@ -16,12 +16,20 @@ GameObject::GameObject(bool playerControl, int collisionType)
 	m_moveRight(false),
 	m_moveUp(false),
 	m_moveDown(false),
-	m_playerControl(playerControl),
 	m_moved(false),
-	m_collisionType(collisionType)
+	m_playerControl(false),
+	m_collisionType(CT_Overlap)
 {
-	if (m_playerControl)
+	if (type == Obj_Player)
+	{
+		m_playerControl = true;
 		m_position = Vector2(50, 50);
+		m_collisionType = CT_Block;
+	}
+	else if (type == Obj_Rock)
+	{
+		m_collisionType = CT_Block;
+	}
 
 	m_sprite = new Sprite("pacman.png");
 }
@@ -75,7 +83,6 @@ void GameObject::OnOverlap(GameObject* other)
 	// If we block, and so they, adjust our position to resolve the collision
 	if (m_collisionType == CT_Block && other->m_collisionType == CT_Block)
 	{
-		AudioHandler::PlaySoundEffect(SFX_Low);
 		float mtvDistance = FLT_MAX;
 		Vector2 mtvAxis;
 

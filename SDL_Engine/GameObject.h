@@ -10,6 +10,12 @@ enum CollisionType
 	NumCollisionTypes
 };
 
+enum GameObjectType
+{
+	Obj_Player,
+	Obj_Rock
+};
+
 class Sprite;
 
 class GameObject
@@ -26,6 +32,7 @@ class GameObject
 
 	bool m_playerControl;
 	int m_collisionType;
+	int m_type;
 
 	bool m_moveUp;
 	bool m_moveDown;
@@ -36,7 +43,7 @@ public:
 	bool m_moved;
 
 
-	GameObject(bool playerControl = false, int collisionType = CT_Block);
+	GameObject(int type);
 	~GameObject();
 
 	Vector2 GetOrigin();
