@@ -12,31 +12,21 @@ GameObject::GameObject(int type)
 	m_size(48, 48),
 	m_spriteOffset(0, 0),
 	m_spriteSize(24, 24),
-	m_moveLeft(false),
-	m_moveRight(false),
-	m_moveUp(false),
-	m_moveDown(false),
 	m_moved(false),
-	m_playerControl(false),
-	m_collisionType(CT_Overlap)
+	m_collisionType(CT_Overlap),
+	m_type(type)
 {
-	if (type == Obj_Player)
+	if (type == Obj_Rock)
 	{
-		m_playerControl = true;
-		m_position = Vector2(50, 50);
+		m_sprite = new Sprite("pacman.png");
 		m_collisionType = CT_Block;
 	}
-	else if (type == Obj_Rock)
-	{
-		m_collisionType = CT_Block;
-	}
-
-	m_sprite = new Sprite("pacman.png");
 }
 
 GameObject::~GameObject()
 {
-	delete m_sprite;
+	if (m_sprite)
+		delete m_sprite;
 }
 
 Vector2 GameObject::GetOrigin()
@@ -81,7 +71,7 @@ bool GameObject::TestAxis(Vector2 axis, float min_a, float min_b, float max_a, f
 void GameObject::OnOverlap(GameObject* other)
 {
 	// If we block, and so they, adjust our position to resolve the collision
-	if (m_collisionType == CT_Block && other->m_collisionType == CT_Block)
+	if (m_collisionType == CT_Block && other->m_collisionType == CT_Block && m_moved)
 	{
 		float mtvDistance = FLT_MAX;
 		Vector2 mtvAxis;
@@ -98,33 +88,7 @@ void GameObject::OnOverlap(GameObject* other)
 
 void GameObject::Update(float deltaTime)
 {
-	m_velocity = Vector2(0, 0);
-	Vector2 direction;
-	if (m_moveUp)
-	{
-		direction.y = -1;
-	}
-	else if (m_moveDown)
-	{
-		direction.y = 1;
-	}
 
-	if (m_moveLeft)
-	{
-		direction.x = -1;
-	}
-	else if (m_moveRight)
-	{
-		direction.x = 1;
-	}
-
-	m_velocity = direction * deltaTime * 100;
-	if (m_velocity.magnitudeSquared() > 0)
-		m_moved = true;
-	else
-		m_moved = false;
-
-	m_position += m_velocity;
 }
 
 void GameObject::Render()
@@ -135,73 +99,10 @@ void GameObject::Render()
 
 void GameObject::OnKeyDown(SDL_Keycode key)
 {
-	if (!m_playerControl) return;
 
-	if (key == SDLK_1)
-		AudioHandler::PlaySoundEffect(SFX_Low);
-
-	if (key == SDLK_2)
-		AudioHandler::PlaySoundEffect(SFX_Medium);
-
-	if (key == SDLK_3)
-		AudioHandler::PlaySoundEffect(SFX_High);
-
-	if (key == SDLK_4)
-		AudioHandler::PlaySoundEffect(SFX_Scratch);
-
-	if (key == SDLK_5)
-	{
-		if (Mix_PlayingMusic() == 0)
-		{
-			AudioHandler::PlaySong(SONG_Beat);
-		}
-		else
-		{
-			AudioHandler::ToggleSong();
-		}
-	}
-
-	if (key == SDLK_6)
-	{
-		AudioHandler::StopSong();
-	}
-
-	if (key == SDLK_w)
-	{
-		m_moveUp = true;
-	}
-	if (key == SDLK_a)
-	{
-		m_moveLeft = true;
-	}
-	if (key == SDLK_s)
-	{
-		m_moveDown = true;
-	}
-	if (key == SDLK_d)
-	{
-		m_moveRight = true;
-	}
 }
 
 void GameObject::OnKeyUp(SDL_Keycode key)
 {
-	if (!m_playerControl) return;
 
-	if (key == SDLK_w)
-	{
-		m_moveUp = false;
-	}
-	if (key == SDLK_a)
-	{
-		m_moveLeft = false;
-	}
-	if (key == SDLK_s)
-	{
-		m_moveDown = false;
-	}
-	if (key == SDLK_d)
-	{
-		m_moveRight = false;
-	}
 }

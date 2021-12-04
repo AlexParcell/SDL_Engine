@@ -106,7 +106,7 @@ public:
 
 	float magnitudeSquared()
 	{
-		return x * x + y * y;
+		return (x * x) + (y * y);
 	}
 
 	float magnitude()

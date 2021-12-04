@@ -3,15 +3,13 @@
 #include "Text.h"
 #include "Constants.h"
 #include "Quadtree.h"
+#include "Player.h"
 
 #include <iostream>
 
 Level::Level()
 {
-	AddObject(Obj_Rock);
 	AddObject(Obj_Player);
-	SDL_Color textColor = { 0, 0, 255, 0 };
-	m_text = new Text("Hi!!!", textColor);
 
 	Vector2 treeOrigin = Vector2(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
 	Vector2 treeHalfDimension = Vector2(2048, 2048);
@@ -31,7 +29,6 @@ Level::~Level()
 	{
 		delete obj;
 	}
-	delete m_text;
 	delete m_tree;
 }
 
@@ -64,13 +61,21 @@ void Level::Render()
 {
 	for (GameObject* obj : m_objects)
 		obj->Render();
-
-	m_text->Render();
 }
 
 void Level::AddObject(int type)
 {
-	GameObject* newObject = new GameObject(type);
+	GameObject* newObject = nullptr;
+
+	switch (type)
+	{
+	case (Obj_Player):
+		newObject = new Player(type);
+		break;
+	default:
+		newObject = new GameObject(type);
+		break;
+	}
 
 	m_objects.push_back(newObject);
 }

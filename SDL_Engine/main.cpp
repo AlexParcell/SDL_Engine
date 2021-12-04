@@ -68,13 +68,16 @@ void exit()
 	SDL_Quit();
 }
 
+Uint64 now = SDL_GetPerformanceCounter();
+Uint64 last = 0;
+
 float GetDeltaTime()
 {
-	static Uint64 lastFrameTime = 0;
-	Uint64 thisFrameTime = SDL_GetTicks64();
-	float deltaTime = ((float)thisFrameTime - (float)lastFrameTime) / 1000.0f;
-	lastFrameTime = thisFrameTime;
-	return deltaTime;
+	last = now;
+	now = SDL_GetPerformanceCounter();
+	double deltaTime = (double)(now - last) * 1000 / (double)SDL_GetPerformanceFrequency();
+	deltaTime *= 0.001f; // convert to seconds
+	return (float)deltaTime;
 }
 
 int main(int argc, char* args[])

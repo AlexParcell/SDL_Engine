@@ -38,3 +38,6 @@
 *.idb
 *.pdb
 *.ilk
+.vs/SDL_Engine/v16/.suo
+.vs/SDL_Engine/v16/Browse.VC.db
+*.db

@@ -20,6 +20,7 @@ class Sprite;
 
 class GameObject
 {
+protected:
 	Sprite* m_sprite;
 
 	Vector2 m_velocity;
@@ -30,18 +31,11 @@ class GameObject
 	Vector2 m_spriteOffset;
 	Vector2 m_spriteSize;
 
-	bool m_playerControl;
 	int m_collisionType;
 	int m_type;
 
-	bool m_moveUp;
-	bool m_moveDown;
-	bool m_moveLeft;
-	bool m_moveRight;
-
 public:
 	bool m_moved;
-
 
 	GameObject(int type);
 	~GameObject();
@@ -51,10 +45,9 @@ public:
 
 	bool TestAxis(Vector2 axis, float min_a, float min_b, float max_a, float max_b, Vector2& mtvAxis, float& mtvDistance);
 
-	void OnOverlap(GameObject* other);
-
-	void Update(float deltaTime);
-	void Render();
-	void OnKeyDown(SDL_Keycode key);
-	void OnKeyUp(SDL_Keycode key);
+	virtual void OnOverlap(GameObject* other);
+	virtual void Update(float deltaTime);
+	virtual void Render();
+	virtual void OnKeyDown(SDL_Keycode key);
+	virtual void OnKeyUp(SDL_Keycode key);
 };

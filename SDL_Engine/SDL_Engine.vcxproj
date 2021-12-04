@@ -133,6 +133,7 @@
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="LevelHandler.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="Sprite.cpp" />
   </ItemGroup>
@@ -143,6 +144,7 @@
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="LevelHandler.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Quadtree.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Text.h" />

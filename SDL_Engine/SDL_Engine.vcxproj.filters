@@ -9,6 +9,7 @@
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="AudioHandler.cpp" />
+    <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sprite.h" />
@@ -21,5 +22,6 @@
     <ClInclude Include="AudioHandler.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="Quadtree.h" />
+    <ClInclude Include="Player.h" />
   </ItemGroup>
 </Project>
