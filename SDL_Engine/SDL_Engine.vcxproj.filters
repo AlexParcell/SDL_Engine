@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="InputHandler.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="LevelHandler.cpp" />
+    <ClCompile Include="Level.cpp" />
+    <ClCompile Include="Text.cpp" />
+    <ClCompile Include="AudioHandler.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Sprite.h" />
+    <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="Vector2.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="LevelHandler.h" />
+    <ClInclude Include="Level.h" />
+    <ClInclude Include="Text.h" />
+    <ClInclude Include="AudioHandler.h" />
+    <ClInclude Include="Constants.h" />
+    <ClInclude Include="Quadtree.h" />
+  </ItemGroup>
+</Project>
