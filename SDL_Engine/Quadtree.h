@@ -10,12 +10,13 @@ class QuadTree
 	Vector2 m_origin;
 	Vector2 m_halfDimension;
 	QuadTree* m_children[4];
-	GameObject* m_data;
+	std::vector<GameObject*> m_data;
+	const int m_capacity = 4;
 
 public:
 
 	QuadTree(const Vector2& origin, const Vector2& halfDimension)
-		: m_origin(origin), m_halfDimension(halfDimension), m_data(nullptr)
+		: m_origin(origin), m_halfDimension(halfDimension)
 	{
 		for (int i = 0; i < 4; i++)
 			m_children[i] = nullptr;
@@ -44,17 +45,16 @@ public:
 	{
 		if (IsLeafNode())
 		{
-			// If we're a leaf and we have no data, give us the data and go back
-			if (m_data == nullptr)
+			// If we're a leaf and we have no space, give us the data and go back
+			if (m_data.size() < m_capacity)
 			{
-				m_data = data;
+				m_data.push_back(data);
 				return;
 			}
-			else
+			else // Else we're full, so let's subdivide
 			{
-				// If we're a leaf and we have data, subdivide
-				GameObject* oldData = m_data;
-				m_data = nullptr;
+				std::vector<GameObject*> oldData = m_data;
+				m_data.clear();
 
 				for (int i = 0; i < 4; i++)
 				{
@@ -64,7 +64,8 @@ public:
 					m_children[i] = new QuadTree(newOrigin, m_halfDimension * 0.5f);
 				}
 
-				m_children[GetQuadrantContainingPoint(oldData->GetOrigin())]->insert(oldData);
+				for (GameObject* obj : oldData)
+					m_children[GetQuadrantContainingPoint(obj->GetOrigin())]->insert(obj);
 
 				m_children[GetQuadrantContainingPoint(data->GetOrigin())]->insert(data);
 			}
@@ -82,13 +83,15 @@ public:
 		if (IsLeafNode())
 		{
 			// If we're a leaf, null out our data
-			if (m_data == data)
+
+			for (int i = 0; i < m_data.size(); i++)
 			{
-				m_data = nullptr;
+				if (m_data[i] == data)
+					m_data.erase(m_data.begin() + i);
 			}
 
 			// Indicate that we are now empty if we are
-			if (m_data == nullptr)
+			if (m_data.size() == 0)
 				return true;
 			else
 				return false;
@@ -135,11 +138,17 @@ public:
 		if (IsLeafNode())
 		{
 			// Check if we're intersecting with the data we've found
-			if (m_data != nullptr && m_data != a)
+			if (m_data.size() > 0)
 			{
-				if (AABB(a->GetBoundingBox(), m_data->GetBoundingBox()))
+				for (GameObject* obj : m_data)
 				{
-					results.push_back(m_data);
+					if (a != obj)
+					{
+						if (AABB(a->GetBoundingBox(), obj->GetBoundingBox()))
+						{
+							results.push_back(obj);
+						}
+					}
 				}
 			}
 		}

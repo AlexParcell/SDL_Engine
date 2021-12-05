@@ -13,9 +13,11 @@ enum CollisionType
 enum GameObjectType
 {
 	Obj_Player,
-	Obj_Rock,
-	Tile_Grass,
-	Tile_Water,
+	Tile_Wood,
+	Tile_WoodDark,
+	Tile_WallLower,
+	Tile_WallHigher,
+	Tile_Ceiling,
 	NumObjects
 };
 
@@ -44,7 +46,7 @@ public:
 	~GameObject();
 
 	Vector2 GetOrigin();
-	SDL_Rect GetBoundingBox();
+	virtual SDL_Rect GetBoundingBox();
 
 	bool TestAxis(Vector2 axis, float min_a, float min_b, float max_a, float max_b, Vector2& mtvAxis, float& mtvDistance);
 

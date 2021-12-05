@@ -14,6 +14,7 @@ public:
 	Player(int type);
 	~Player();
 
+	virtual SDL_Rect GetBoundingBox();
 	virtual void OnOverlap(GameObject* other);
 	virtual void Update(float deltaTime);
 	virtual void Render();

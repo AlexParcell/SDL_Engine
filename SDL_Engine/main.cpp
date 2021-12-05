@@ -41,7 +41,7 @@ bool initialize()
 			}
 			else
 			{
-				SDL_SetRenderDrawColor(g_renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+				SDL_SetRenderDrawColor(g_renderer, 0x00, 0x00, 0x00, 0x00);
 
 				IMG_Init(IMG_INIT_PNG);
 				Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);

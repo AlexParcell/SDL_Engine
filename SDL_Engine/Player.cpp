@@ -22,6 +22,17 @@ Player::~Player()
 
 }
 
+SDL_Rect Player::GetBoundingBox()
+{
+	SDL_Rect box;
+	box.x = m_position.x;
+	box.y = m_position.y + (m_size.y - 4);
+	box.w = m_size.x;
+	box.h = 4;
+
+	return box;
+}
+
 void Player::OnOverlap(GameObject* other)
 {
 	GameObject::OnOverlap(other);
