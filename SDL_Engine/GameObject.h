@@ -19,6 +19,11 @@ enum GameObjectType
 	Tile_WallHigher,
 	Tile_Ceiling,
 	Misc_Blocker,
+	Obj_Fridge,
+	Obj_Cabinets,
+	Obj_Oven,
+	Tile_Wall,
+	Obj_WelcomeMat,
 	NumObjects
 };
 

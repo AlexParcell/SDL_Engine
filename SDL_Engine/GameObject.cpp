@@ -32,6 +32,13 @@ GameObject::GameObject(int type)
 		m_collisionType = CT_Block;
 	}
 	break;
+	case(Tile_Wall):
+	{
+		m_sprite = new Sprite("decoration.png");
+		m_collisionType = CT_Block;
+		m_spriteOffset = Vector2(16, 32);
+	}
+	break;
 	case(Tile_Wood):
 	{
 		m_sprite = new Sprite("decoration.png");
@@ -54,6 +61,41 @@ GameObject::GameObject(int type)
 	case(Misc_Blocker):
 	{
 		m_collisionType = CT_Block;
+	}
+	break;
+	case(Obj_Fridge):
+	{
+		m_sprite = new Sprite("fridge.png");
+		m_collisionType = CT_Block;
+		m_size = Vector2(32, 64);
+		m_spriteSize = Vector2(16, 32);
+		m_zIndex = 64;
+	}
+	break;
+	case(Obj_Cabinets):
+	{
+		m_sprite = new Sprite("cabinets.png");
+		m_collisionType = CT_Block;
+		m_size = Vector2(64, 64);
+		m_spriteSize = Vector2(32, 32);
+		m_zIndex = 64;
+	}
+	break;
+	case(Obj_Oven):
+	{
+		m_sprite = new Sprite("oven.png");
+		m_collisionType = CT_Block;
+		m_size = Vector2(32, 64);
+		m_spriteSize = Vector2(16, 32);
+		m_zIndex = 64;
+	}
+	break;
+	case(Obj_WelcomeMat):
+	{
+		m_sprite = new Sprite("WelcomeMat.png");
+		m_size = Vector2(32, 32);
+		m_spriteSize = Vector2(16, 16);
+		m_zIndex = 2;
 	}
 	break;
 	}

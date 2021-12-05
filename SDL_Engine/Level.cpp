@@ -9,6 +9,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <algorithm>
 
 Level::Level(std::string levelName)
 {
@@ -59,8 +60,17 @@ Level::~Level()
 	delete m_tree;
 }
 
+bool ZIndex_YPos_Sort(GameObject* a, GameObject* b)
+{
+	float a_value = a->GetPosition().y + a->m_zIndex;
+	float b_value = b->GetPosition().y + b->m_zIndex;
+
+	return a_value < b_value;
+}
+
 void Level::Update(float deltaTime)
 {
+	// Update our objects
 	for (GameObject* obj : m_objects)
 	{
 		obj->Update(deltaTime);
@@ -73,6 +83,7 @@ void Level::Update(float deltaTime)
 		}
 	}
 
+	// Collisions
 	for (GameObject* obj : m_objects)
 	{
 		std::vector<GameObject*> results;
@@ -82,17 +93,17 @@ void Level::Update(float deltaTime)
 			obj->OnOverlap(other);
 		}
 	}
+
+	// Sort for Z Indexing and Y Position
+	// Sorry for this one CPU
+	std::sort(m_objects.begin(), m_objects.end(), ZIndex_YPos_Sort);
 }
 
 void Level::Render()
 {
-	for (int i = 0; i < 2; i++)
+	for (GameObject* obj : m_objects)
 	{
-		for (GameObject* obj : m_objects)
-		{
-			if (obj->m_zIndex == i)
-				obj->Render();
-		}
+		obj->Render();
 	}
 }
 
