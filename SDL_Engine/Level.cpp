@@ -4,13 +4,18 @@
 #include "Constants.h"
 #include "Quadtree.h"
 #include "Player.h"
+#include "JSON.hpp"
+#include <string>
 
 #include <iostream>
+#include <fstream>
 
-Level::Level()
+Level::Level(std::string levelName)
 {
-	AddObject(Obj_Player);
+	// Load in objects from JSON for the level
+	LoadObjectsFromJSON(levelName);
 
+	// Set up the quad tree
 	Vector2 treeOrigin = Vector2(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
 	Vector2 treeHalfDimension = Vector2(2048, 2048);
 	m_tree = new QuadTree(treeOrigin, treeHalfDimension);
@@ -21,6 +26,27 @@ Level::Level()
 	m_camera.y = 0;
 	m_camera.h = SCREEN_HEIGHT;
 	m_camera.w = SCREEN_WIDTH;
+}
+
+void Level::LoadObjectsFromJSON(std::string levelName)
+{
+	std::fstream file(levelName); // opening file
+	nlohmann::json levelData; // making JSON object
+	file >> levelData; // reading JSON file to object
+	file.close(); // closing file
+
+	nlohmann::json objects = levelData["LevelData"];
+	for (int i = 0; i < objects.size(); i++)
+	{
+		int type = objects[i]["Type"];
+		if (type >= NumObjects)
+			continue;
+
+		Vector2 position = Vector2(objects[i]["Position"]["x"], objects[i]["Position"]["y"]);
+		GameObject* newObject = CreateObject(type);
+		newObject->SetPosition(position);
+		m_objects.push_back(newObject);
+	}
 }
 
 Level::~Level()
@@ -59,11 +85,17 @@ void Level::Update(float deltaTime)
 
 void Level::Render()
 {
-	for (GameObject* obj : m_objects)
-		obj->Render();
+	for (int i = 0; i < 2; i++)
+	{
+		for (GameObject* obj : m_objects)
+		{
+			if (obj->m_zIndex == i)
+				obj->Render();
+		}
+	}
 }
 
-void Level::AddObject(int type)
+GameObject* Level::CreateObject(int type)
 {
 	GameObject* newObject = nullptr;
 
@@ -77,5 +109,5 @@ void Level::AddObject(int type)
 		break;
 	}
 
-	m_objects.push_back(newObject);
+	return newObject;
 }

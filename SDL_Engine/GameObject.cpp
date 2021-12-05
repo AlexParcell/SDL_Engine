@@ -6,6 +6,8 @@
 
 #include <iostream>
 
+Sprite* g_collisionBox = nullptr;
+
 GameObject::GameObject(int type)
 	: m_sprite(nullptr),
 	m_position(0, 0),
@@ -14,13 +16,36 @@ GameObject::GameObject(int type)
 	m_spriteSize(24, 24),
 	m_moved(false),
 	m_collisionType(CT_Overlap),
-	m_type(type)
+	m_type(type),
+	m_zIndex(0)
 {
-	if (type == Obj_Rock)
+	switch (type)
+	{
+	case(Obj_Rock):
 	{
 		m_sprite = new Sprite("pacman.png");
 		m_collisionType = CT_Block;
 	}
+	break;
+	case(Tile_Grass):
+	{
+		m_sprite = new Sprite("grass.png");
+		m_collisionType = CT_Overlap;
+		m_size = Vector2(32, 32);
+		m_spriteSize = Vector2(16, 16);
+	}
+	break;
+	case(Tile_Water):
+	{
+		m_sprite = new Sprite("water.png");
+		m_collisionType = CT_Block;
+		m_size = Vector2(32, 32);
+		m_spriteSize = Vector2(16, 16);
+	}
+	break;
+	}
+
+	g_collisionBox = new Sprite("box.png");
 }
 
 GameObject::~GameObject()
@@ -73,6 +98,7 @@ void GameObject::OnOverlap(GameObject* other)
 	// If we block, and so they, adjust our position to resolve the collision
 	if (m_collisionType == CT_Block && other->m_collisionType == CT_Block && m_moved)
 	{
+		std::cout << "Adjusting position" << std::endl;
 		float mtvDistance = FLT_MAX;
 		Vector2 mtvAxis;
 
@@ -95,6 +121,13 @@ void GameObject::Render()
 {
 	if (m_sprite)
 		m_sprite->Render(m_position, m_size, m_spriteOffset, m_spriteSize);
+
+	if (g_collisionBox)
+	{
+		Vector2 offset = Vector2(0, 0);
+		Vector2 size = Vector2(64, 64);
+		g_collisionBox->Render(m_position, m_size, offset, size);
+	}
 }
 
 void GameObject::OnKeyDown(SDL_Keycode key)

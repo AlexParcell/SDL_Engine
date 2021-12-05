@@ -13,7 +13,10 @@ enum CollisionType
 enum GameObjectType
 {
 	Obj_Player,
-	Obj_Rock
+	Obj_Rock,
+	Tile_Grass,
+	Tile_Water,
+	NumObjects
 };
 
 class Sprite;
@@ -31,11 +34,11 @@ protected:
 	Vector2 m_spriteOffset;
 	Vector2 m_spriteSize;
 
-	int m_collisionType;
-	int m_type;
-
 public:
 	bool m_moved;
+	int m_zIndex;
+	int m_collisionType;
+	int m_type;
 
 	GameObject(int type);
 	~GameObject();
@@ -44,6 +47,9 @@ public:
 	SDL_Rect GetBoundingBox();
 
 	bool TestAxis(Vector2 axis, float min_a, float min_b, float max_a, float max_b, Vector2& mtvAxis, float& mtvDistance);
+
+	void SetPosition(Vector2 pos) { m_position = pos; }
+	Vector2 GetPosition() { return m_position; }
 
 	virtual void OnOverlap(GameObject* other);
 	virtual void Update(float deltaTime);

@@ -154,6 +154,7 @@ public:
 				bb.w = m_halfDimension.x * 2;
 				bb.h = m_halfDimension.y * 2;
 
+				// We are, so look at the subdivision
 				if (AABB(a->GetBoundingBox(), bb))
 					m_children[i]->GetCollisions(a, results);
 			}

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SDL.h>
+#include <string>
 
 class Level;
 
@@ -9,7 +10,7 @@ class LevelHandler
 	static Level* m_currentLevel;
 
 public:
-	static void OpenLevel();
+	static void OpenLevel(std::string levelName);
 	static void Update(float deltaTime);
 	static void Render();
 

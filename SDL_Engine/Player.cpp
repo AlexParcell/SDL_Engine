@@ -14,6 +14,7 @@ Player::Player(int type)
 	m_sprite = new Sprite("me7.png");
 	m_spriteSize = Vector2(16, 32);
 	m_size = Vector2(32, 64);
+	m_zIndex = 1;
 }
 
 Player::~Player()

@@ -85,7 +85,7 @@ int main(int argc, char* args[])
 	if (initialize())
 	{
 		// Start her up
-		LevelHandler::OpenLevel();
+		LevelHandler::OpenLevel("Level1.json");
 		AudioHandler::Initialize();
 
 		// Game loop

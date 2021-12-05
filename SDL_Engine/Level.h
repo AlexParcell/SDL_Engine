@@ -4,6 +4,7 @@
 
 #include <vector>
 #include "Vector2.h"
+#include <string>
 
 class GameObject;
 class Text;
@@ -17,11 +18,12 @@ class Level
 	QuadTree* m_tree;
 
 public:
-	Level();
+	Level(std::string levelName);
+	void LoadObjectsFromJSON(std::string levelName);
 	~Level();
 	void Update(float deltaTime);
 	void Render();
 
 	std::vector<GameObject*> GetObjects() { return m_objects; }
-	void AddObject(int type);
+	GameObject* CreateObject(int type);
 };

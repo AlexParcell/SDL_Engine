@@ -1,14 +1,15 @@
 #include "LevelHandler.h"
 #include "Level.h"
+#include <string>
 
 Level* LevelHandler::m_currentLevel = nullptr;
 
-void LevelHandler::OpenLevel()
+void LevelHandler::OpenLevel(std::string levelName)
 {
 	if (m_currentLevel)
 		delete m_currentLevel;
 
-	m_currentLevel = new Level();
+	m_currentLevel = new Level(levelName);
 }
 
 void LevelHandler::Update(float deltaTime)
