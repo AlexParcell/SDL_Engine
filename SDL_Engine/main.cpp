@@ -6,7 +6,12 @@
 #include "InputHandler.h"
 #include "LevelHandler.h"
 #include "AudioHandler.h"
+#include "InterfaceHandler.h"
 #include "Constants.h"
+
+#include "ImGui/imgui.h"
+#include "ImGui/imgui_impl_sdl.h"
+#include "ImGui/imgui_impl_sdlrenderer.h"
 
 // Window to be rendering too
 SDL_Window* g_window = NULL;
@@ -43,6 +48,13 @@ bool initialize()
 			{
 				SDL_SetRenderDrawColor(g_renderer, 0x00, 0x00, 0x00, 0x00);
 
+				IMGUI_CHECKVERSION();
+				ImGui::CreateContext();
+				ImGuiIO& io = ImGui::GetIO(); (void)io;
+				ImGui::StyleColorsDark();
+				ImGui_ImplSDL2_InitForSDLRenderer(g_window);
+				ImGui_ImplSDLRenderer_Init(g_renderer);
+
 				IMG_Init(IMG_INIT_PNG);
 				Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
 				TTF_Init();
@@ -55,6 +67,11 @@ bool initialize()
 
 void exit()
 {
+	// End ImGui
+	ImGui_ImplSDLRenderer_Shutdown();
+	ImGui_ImplSDL2_Shutdown();
+	ImGui::DestroyContext();
+
 	//Clear resources
 	SDL_DestroyRenderer(g_renderer);
 	SDL_DestroyWindow(g_window);
@@ -87,6 +104,7 @@ int main(int argc, char* args[])
 		// Start her up
 		LevelHandler::OpenLevel("Level1.json");
 		AudioHandler::Initialize();
+		InterfaceHandler::OpenHUD();
 
 		// Game loop
 		while (!g_quit)
@@ -95,10 +113,15 @@ int main(int argc, char* args[])
 
 			InputHandler::Update(deltaTime);
 			LevelHandler::Update(deltaTime);
+			InterfaceHandler::Update(deltaTime);
+
+
+			ImGui::Render();
 
 			SDL_RenderClear(g_renderer);
 
 			LevelHandler::Render();
+			InterfaceHandler::Render();
 
 			SDL_RenderPresent(g_renderer);
 		}

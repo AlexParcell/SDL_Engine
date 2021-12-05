@@ -51,6 +51,11 @@ GameObject::GameObject(int type)
 		m_spriteOffset.x = 16;
 	}
 	break;
+	case(Misc_Blocker):
+	{
+		m_collisionType = CT_Block;
+	}
+	break;
 	}
 }
 

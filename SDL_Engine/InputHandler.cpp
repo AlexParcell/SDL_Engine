@@ -4,6 +4,10 @@
 #include "GameObject.h"
 #include <vector>
 
+#include "ImGui/imgui.h"
+#include "ImGui/imgui_impl_sdl.h"
+#include "ImGui/imgui_impl_sdlrenderer.h"
+
 extern bool g_quit;
 
 void InputHandler::Update(float deltaTime)
@@ -11,6 +15,8 @@ void InputHandler::Update(float deltaTime)
 	SDL_Event e;
 	while (SDL_PollEvent(&e) != 0)
 	{
+		ImGui_ImplSDL2_ProcessEvent(&e);
+
 		switch (e.type)
 		{
 		case (SDL_QUIT):

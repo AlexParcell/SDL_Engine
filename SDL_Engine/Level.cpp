@@ -45,6 +45,7 @@ void Level::LoadObjectsFromJSON(std::string levelName)
 		Vector2 position = Vector2(objects[i]["Position"]["x"], objects[i]["Position"]["y"]);
 		GameObject* newObject = CreateObject(type);
 		newObject->SetPosition(position);
+
 		m_objects.push_back(newObject);
 	}
 }

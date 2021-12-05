@@ -129,7 +129,14 @@
   <ItemGroup>
     <ClCompile Include="AudioHandler.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="ImGui\imgui.cpp" />
+    <ClCompile Include="ImGui\imgui_draw.cpp" />
+    <ClCompile Include="ImGui\imgui_impl_sdl.cpp" />
+    <ClCompile Include="ImGui\imgui_impl_sdlrenderer.cpp" />
+    <ClCompile Include="ImGui\imgui_tables.cpp" />
+    <ClCompile Include="ImGui\imgui_widgets.cpp" />
     <ClCompile Include="InputHandler.cpp" />
+    <ClCompile Include="InterfaceHandler.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="LevelHandler.cpp" />
     <ClCompile Include="main.cpp" />
@@ -141,7 +148,16 @@
     <ClInclude Include="AudioHandler.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="ImGui\imconfig.h" />
+    <ClInclude Include="ImGui\imgui.h" />
+    <ClInclude Include="ImGui\imgui_impl_sdl.h" />
+    <ClInclude Include="ImGui\imgui_impl_sdlrenderer.h" />
+    <ClInclude Include="ImGui\imgui_internal.h" />
+    <ClInclude Include="ImGui\imstb_rectpack.h" />
+    <ClInclude Include="ImGui\imstb_textedit.h" />
+    <ClInclude Include="ImGui\imstb_truetype.h" />
     <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="InterfaceHandler.h" />
     <ClInclude Include="JSON.hpp" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="LevelHandler.h" />

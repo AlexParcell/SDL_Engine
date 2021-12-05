@@ -18,6 +18,7 @@ enum GameObjectType
 	Tile_WallLower,
 	Tile_WallHigher,
 	Tile_Ceiling,
+	Misc_Blocker,
 	NumObjects
 };
 
@@ -52,6 +53,9 @@ public:
 
 	void SetPosition(Vector2 pos) { m_position = pos; }
 	Vector2 GetPosition() { return m_position; }
+
+	void SetSize(Vector2 size) { m_size = size; }
+	Vector2 GetSize() { return m_size; }
 
 	virtual void OnOverlap(GameObject* other);
 	virtual void Update(float deltaTime);
