@@ -39,7 +39,9 @@ void Level::LoadObjectsFromJSON(std::string levelName)
 	nlohmann::json objects = levelData["LevelData"];
 	for (int i = 0; i < objects.size(); i++)
 	{
-		int type = objects[i]["Type"];
+		std::string typeString = objects[i]["Type"];
+		int type = objs_stringToEnum(typeString);
+
 		if (type >= NumObjects)
 			continue;
 

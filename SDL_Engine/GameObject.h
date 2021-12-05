@@ -2,6 +2,7 @@
 #include <SDL.h>
 #include <SDL_Mixer.h>
 #include "Vector2.h"
+#include <string>
 
 enum CollisionType
 {
@@ -26,6 +27,30 @@ enum GameObjectType
 	Obj_WelcomeMat,
 	NumObjects
 };
+
+static std::string s_gameObjectType[NumObjects] = {
+	"Player",
+	"Wood",
+	"WoodDark",
+	"WallLower",
+	"WallHigher",
+	"Ceiling",
+	"Blocker",
+	"Fridge",
+	"Cabinets",
+	"Oven",
+	"Wall",
+	"WelcomeMat"
+};
+
+static int objs_stringToEnum(std::string s)
+{
+	for (int i = 0; i < NumObjects; i++)
+	{
+		if (s == s_gameObjectType[i])
+			return i;
+	}
+}
 
 class Sprite;
 
