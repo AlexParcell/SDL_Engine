@@ -4,6 +4,7 @@
 #include "Constants.h"
 #include "Quadtree.h"
 #include "Player.h"
+#include "Cat.h"
 #include "JSON.hpp"
 #include <string>
 
@@ -117,6 +118,9 @@ GameObject* Level::CreateObject(int type)
 	{
 	case (Obj_Player):
 		newObject = new Player(type);
+		break;
+	case (Obj_Cat):
+		newObject = new Cat(type);
 		break;
 	default:
 		newObject = new GameObject(type);

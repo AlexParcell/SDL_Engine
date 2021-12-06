@@ -45,7 +45,7 @@ void HeadsUpDisplay::Update(float deltaTime)
 	ImGui::Begin("Test");
 	ImGui::SetWindowPos(ImVec2(0, 384));
 	ImGui::SetWindowSize(ImVec2(640, 256));
-	ImGui::Text("Wow this is really cool there is UI now");
+	ImGui::Text("Test test test test test test test kjbjaskgjhsagha");
 	ImGui::End();
 }
 

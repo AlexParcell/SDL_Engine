@@ -10,7 +10,6 @@ Player::Player(int type)
 	m_moveRight(false),
 	m_moveDown(false)
 {
-	m_position = Vector2(50, 50);
 	m_collisionType = CT_Block;
 	m_sprite = new Sprite("me7.png");
 	m_spriteSize = Vector2(16, 32);

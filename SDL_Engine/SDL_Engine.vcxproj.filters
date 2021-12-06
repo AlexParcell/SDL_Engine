@@ -29,6 +29,7 @@
       <Filter>ImGui</Filter>
     </ClCompile>
     <ClCompile Include="InterfaceHandler.cpp" />
+    <ClCompile Include="Cat.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sprite.h" />
@@ -68,6 +69,7 @@
       <Filter>ImGui</Filter>
     </ClInclude>
     <ClInclude Include="InterfaceHandler.h" />
+    <ClInclude Include="Cat.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ImGui">

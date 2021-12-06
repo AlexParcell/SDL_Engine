@@ -25,6 +25,7 @@ enum GameObjectType
 	Obj_Oven,
 	Tile_Wall,
 	Obj_WelcomeMat,
+	Obj_Cat,
 	NumObjects
 };
 
@@ -40,7 +41,8 @@ static std::string s_gameObjectType[NumObjects] = {
 	"Cabinets",
 	"Oven",
 	"Wall",
-	"WelcomeMat"
+	"WelcomeMat",
+	"Cat"
 };
 
 static int objs_stringToEnum(std::string s)
