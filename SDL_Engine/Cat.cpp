@@ -12,11 +12,17 @@ Cat::Cat(int type)
 	m_moveUp(false),
 	m_moveLeft(false),
 	m_moveRight(false),
-	m_moveDown(false)
+	m_moveDown(false),
+	m_frameTimer(0.0f),
+	m_moveTimer(0.0f),
+	m_meowTimer(0.0f),
+	m_timeSinceLastMeow(3.0f),
+	m_exclamationBox(nullptr)
 {
 	srand(time(NULL));
 	m_collisionType = CT_Block;
 	m_sprite = new Sprite("cat.png");
+	m_exclamationBox = new Sprite("exclamation.png");
 	m_spriteSize = Vector2(16, 16);
 	m_size = Vector2(32, 32);
 	m_zIndex = 32;
@@ -24,7 +30,7 @@ Cat::Cat(int type)
 
 Cat::~Cat()
 {
-
+	delete m_exclamationBox;
 }
 
 SDL_Rect Cat::GetBoundingBox()
@@ -57,17 +63,34 @@ void Cat::OnOverlap(GameObject* other)
 	}
 }
 
+void Cat::Meow()
+{
+	m_timeSinceLastMeow = 0.0f;
+	AudioHandler::PlaySoundEffect(SFX_Meow);
+}
+
 void Cat::Update(float deltaTime)
 {
 	GameObject::Update(deltaTime);
 
-	static float moveTimer = 0.0f;
-	const float directionInterval = 2.0f;
-	moveTimer += deltaTime;
-
-	if (moveTimer > directionInterval)
+	// Do we wanna meow?
+	m_timeSinceLastMeow += deltaTime;
+	static float meowInterval = 2.0f;
+	m_meowTimer += deltaTime;
+	if (m_meowTimer > meowInterval)
 	{
-		moveTimer = 0.0f;
+		m_meowTimer = 0.0f;
+		if (rand() % 10 == 0)
+			Meow();
+	}
+
+	// Pick a movement direction
+	const float directionInterval = 2.0f;
+	m_moveTimer += deltaTime;
+
+	if (m_moveTimer > directionInterval)
+	{
+		m_moveTimer = 0.0f;
 
 		int direction = rand() % 8;
 
@@ -93,6 +116,8 @@ void Cat::Update(float deltaTime)
 		}
 	}
 
+
+	// Sort out velocity and movement
 	m_velocity = Vector2(0, 0);
 	Vector2 direction = Vector2(0, 0);
 	if (m_moveUp)
@@ -127,15 +152,14 @@ void Cat::Update(float deltaTime)
 		m_moved = false;
 	}
 
-	static float frameTime = 0.0f;
 	const float timeBetweenFrames = 0.1f;
-	frameTime += deltaTime;
+	m_frameTimer += deltaTime;
 
 	if (m_moved)
 	{
-		if (frameTime > timeBetweenFrames)
+		if (m_frameTimer > timeBetweenFrames)
 		{
-			frameTime = 0.0f;
+			m_frameTimer = 0.0f;
 			m_spriteOffset.y += 16;
 
 			if (m_spriteOffset.y > 48)
@@ -153,6 +177,21 @@ void Cat::Update(float deltaTime)
 void Cat::Render()
 {
 	GameObject::Render();
+
+	if (m_timeSinceLastMeow < 1.0f)
+	{
+		SDL_Rect src;
+		src.x = 0;
+		src.y = 0;
+		src.w = 16;
+		src.h = 16;
+		SDL_Rect dest;
+		dest.x = m_position.x;
+		dest.y = m_position.y - 32;
+		dest.w = 32;
+		dest.h = 32;
+		m_exclamationBox->Render(&src, &dest);
+	}
 }
 
 void Cat::OnKeyDown(SDL_Keycode key)

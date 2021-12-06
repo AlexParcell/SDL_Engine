@@ -11,6 +11,7 @@ enum SoundEffects
 	SFX_Medium,
 	SFX_High,
 	SFX_Scratch,
+	SFX_Meow,
 	NumSoundEffects
 };
 
@@ -19,7 +20,8 @@ static std::string s_soundEffectFiles[NumSoundEffects] =
 	"Audio/low.wav",
 	"Audio/medium.wav",
 	"Audio/high.wav",
-	"Audio/scratch.wav"
+	"Audio/scratch.wav",
+	"Audio/meow.wav"
 };
 
 enum Songs
