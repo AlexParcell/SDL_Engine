@@ -24,6 +24,8 @@ public:
 	Cat(int type, std::string name, Personality personality);
 	~Cat();
 
+	void RecieveEmotionalEvent(EmotionalEvent* e);
+
 	virtual SDL_Rect GetBoundingBox();
 	virtual void OnOverlap(GameObject* other);
 	void Meow();

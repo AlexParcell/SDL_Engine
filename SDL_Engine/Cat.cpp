@@ -27,11 +27,25 @@ Cat::Cat(int type, std::string name, Personality personality)
 	m_zIndex = 32;
 	m_baselineEmotionalState = GetBaselineEmotionalState(m_personality);
 	m_emotionalState = m_baselineEmotionalState;
+	EmotionalEventHandler::m_bus->subscribe(this, &Cat::RecieveEmotionalEvent);
 }
 
 Cat::~Cat()
 {
 	delete m_exclamationBox;
+}
+
+void Cat::RecieveEmotionalEvent(EmotionalEvent* e)
+{
+	EmotionalState adjustedImpulse = AdjustEmotionalImpulse(e->m_impulse, m_personality);
+	EmotionalState newEmotionalState = m_emotionalState + adjustedImpulse;
+
+	for (float& v : newEmotionalState.m_emotionalAxis)
+	{
+		v = clip(v, -1, 1);
+	}
+
+	m_emotionalState = newEmotionalState;
 }
 
 SDL_Rect Cat::GetBoundingBox()
@@ -64,6 +78,8 @@ void Cat::Meow()
 void Cat::Update(float deltaTime)
 {
 	GameObject::Update(deltaTime);
+
+	m_emotionalState = lerp(m_emotionalState, m_baselineEmotionalState, deltaTime);
 
 	// Do we wanna meow?
 	m_timeSinceLastMeow += deltaTime;

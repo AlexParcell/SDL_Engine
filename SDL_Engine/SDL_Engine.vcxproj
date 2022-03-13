@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="AudioHandler.cpp" />
     <ClCompile Include="Cat.cpp" />
+    <ClCompile Include="EmotionUtilities.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="ImGui\imgui.cpp" />
     <ClCompile Include="ImGui\imgui_draw.cpp" />
@@ -150,6 +151,7 @@
     <ClInclude Include="Cat.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="EmotionUtilities.h" />
+    <ClInclude Include="EventHandler.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="ImGui\imconfig.h" />
     <ClInclude Include="ImGui\imgui.h" />

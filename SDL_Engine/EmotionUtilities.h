@@ -3,6 +3,7 @@
 #include <vector>
 #include <algorithm>
 #include <utility>
+#include "EventHandler.h"
 
 enum EmotionalAxis
 {
@@ -39,8 +40,12 @@ struct EmotionalState
 
 	EmotionalState()
 	{
-		for (int i = 0; i < NumEmotionalAxis; i++)
-			m_emotionalAxis.push_back(((static_cast<float>(rand()) / static_cast<float>(RAND_MAX)) * 2) - 1);
+		m_emotionalAxis.resize(NumEmotionalAxis);
+
+		m_emotionalAxis[JoySadness] = 0;
+		m_emotionalAxis[TrustDisgust] = 0;
+		m_emotionalAxis[FearAnger] = 0;
+		m_emotionalAxis[SurpriseAnticipation] = 0;
 	}
 
 	EmotionalState(const EmotionalState& state)
@@ -363,35 +368,49 @@ static std::string g_sMoodValues[NumMoods] =
 // These matrices bias stimuli application
 static float g_PersonalityBiasesPositive[NumEmotionalAxis][NumPersonalityAxis] =
 {
-	// O  C  E  A  N
-	{  0, 0, 0, 0, 0  },  // Joy
-	{  0, 0, 0, 0, 0  },  // Trust
-	{  0, 0, 0, 0, 0  },  // Fear
-	{  0, 0, 0, 0, 0  },  // Surprise
+	//  O		C		E		A		N
+	{	0.1,	0,		0,		0,		-0.2	},  // Joy
+	{	0.3,	-0.25,	0,		0.3,	0		},  // Trust
+	{	0,		0.1,	0,		0,		0.25	},  // Fear
+	{	0,		0,		0,		0,		-0.4	},  // Surprise
 };
 
 static float g_PersonalityBiasesNegative[NumEmotionalAxis][NumPersonalityAxis] =
 {
-	// O  C  E  A  N
-	{  0, 0, 0, 0, 0  },  // Sadness
-	{  0, 0, 0, 0, 0  },  // Disgust
-	{  0, 0, 0, 0, 0  },  // Anger
-	{  0, 0, 0, 0, 0  },  // Anticipation
+	//  O		C		E		A		N
+	{	0.1,	0,		0,		0,		-0.2	},  // Sadness
+	{	0.3,	-0.25,	0,		0.3,	0		},  // Disgust
+	{	0,		0.1,	0,		0,		0.25	},  // Anger
+	{	0,		0,		0,		0,		-0.4	},  // Anticipation
 };
 
 // This matrix helps form the baseline personalities
 static float g_BaselineEmotionalStateBiases[NumEmotionalAxis][NumPersonalityAxis] =
 {
-	// O  C  E  A  N
-	{  0.1, 0, 0, 0, -0.2  },  // Joy/Sadness
-	{  0.3, -0.25, 0, 0.3, 0  },  // Trust/Disgust
-	{  0, 0.1, 0, 0, 0.25  },  // Fear/Anger
-	{  0, 0, 0, 0, -0.4  },  // Surprise/Anticipation
+	//  O		C		E		A		N
+	{	0.2,	0,		0.3,	0,		-0.4	},  // Joy/Sadness
+	{	0.3,	-0.4,	0.2,	0.3,	0		},  // Trust/Disgust
+	{	0,		0.3,	0,		-0.2,	0.2	},  // Fear/Anger
+	{	0,		-0.3,	0,		0,		-0.3	},  // Surprise/Anticipation
 };
 
 static float clip(float value, float lower, float upper)
 {
 	return std::max(lower, std::min(value, upper));
+}
+
+static float lerp(float a, float b, float f)
+{
+	return a + f * (b - a);
+}
+
+static EmotionalState lerp(EmotionalState a, EmotionalState b, float f)
+{
+	EmotionalState state;
+	for (int i = 0; i < NumEmotionalAxis; i++)
+		state[i] = lerp(a[i], b[i], f);
+
+	return state;
 }
 
 static EmotionalState GetBaselineEmotionalState(Personality p)
@@ -410,6 +429,21 @@ static EmotionalState GetBaselineEmotionalState(Personality p)
 		state.m_emotionalAxis[i] = clip(state.m_emotionalAxis[i], -1, 1);
 	
 	return state;
+}
+
+static EmotionalState AdjustEmotionalImpulse(EmotionalState impulse, Personality p)
+{
+	EmotionalState adjustedImpulse = impulse;
+
+	for (int i = 0; i < NumEmotionalAxis; i++)
+	{
+		for (int j = 0; j < NumPersonalityAxis; j++)
+		{
+			adjustedImpulse[i] += ((adjustedImpulse[i] < 0) ? g_PersonalityBiasesNegative[i][j] : g_PersonalityBiasesPositive[i][j] * p.GetAxis(j));
+		}
+	}
+
+	return adjustedImpulse;
 }
 
 static std::pair<EmotionalState, std::string> IdentifyEmotionalState(EmotionalState& state)
@@ -431,3 +465,26 @@ static std::pair<EmotionalState, std::string> IdentifyEmotionalState(EmotionalSt
 	if (lowestValueFound != -1)
 		return std::pair<EmotionalState, std::string>(g_fMoodValues[lowestValueFound], g_sMoodValues[lowestValueFound]);
 }
+
+class EmotionalEvent : public Event
+{
+public:
+	EmotionalEvent(EmotionalState impulse) : m_impulse(impulse) {}
+	EmotionalState m_impulse;
+};
+
+class EmotionalEventHandler
+{
+public:
+	static void Initialize()
+	{
+		m_bus = new EventBus();
+	}
+
+	static void Free()
+	{
+		delete m_bus;
+	}
+
+	static EventBus* m_bus;
+};

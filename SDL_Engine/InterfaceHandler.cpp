@@ -49,6 +49,15 @@ void HeadsUpDisplay::Update(float deltaTime)
 	ImGui::Begin("Test");
 	ImGui::SetWindowPos(ImVec2(0, 384));
 	ImGui::SetWindowSize(ImVec2(640, 256));
+
+	if (ImGui::Button("Stimulate Joy"))
+	{
+		EmotionalState impulse;
+		impulse[JoySadness] = 1.0f;
+		EmotionalEvent* e = new EmotionalEvent(impulse);
+		EmotionalEventHandler::m_bus->publish(e);
+		delete e;
+	}
 	
 	for (Cat* cat : LevelHandler::GetActiveLevel()->GetCats())
 	{
@@ -59,7 +68,7 @@ void HeadsUpDisplay::Update(float deltaTime)
 			ImGui::Text(cat->m_name.c_str());
 			std::string currentEmotion = "Current Emotion: " + IdentifyEmotionalState(cat->m_emotionalState).second;
 			ImGui::Text(currentEmotion.c_str());
-			ImGui::InputFloat4("Emotional State: ", &cat->m_emotionalState.m_emotionalAxis[0]);
+			ImGui::InputFloat4("Emotional State", &cat->m_emotionalState.m_emotionalAxis[0]);
 
 			ImGui::Text("Personality: ");
 			std::string openness = "Openness: " + std::to_string(cat->m_personality.GetAxis(Openness));

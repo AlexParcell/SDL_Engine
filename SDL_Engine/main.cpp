@@ -6,6 +6,7 @@
 #include "InputHandler.h"
 #include "LevelHandler.h"
 #include "AudioHandler.h"
+#include "EmotionUtilities.h"
 #include "InterfaceHandler.h"
 #include "Constants.h"
 
@@ -102,6 +103,7 @@ int main(int argc, char* args[])
 	if (initialize())
 	{
 		// Start her up
+		EmotionalEventHandler::Initialize();
 		LevelHandler::OpenLevel("Level1.json");
 		AudioHandler::Initialize();
 		InterfaceHandler::OpenHUD();
@@ -127,6 +129,7 @@ int main(int argc, char* args[])
 		}
 
 		// Tidy up and fuck off
+		EmotionalEventHandler::Free();
 		LevelHandler::Free();
 		AudioHandler::Free();
 	}
