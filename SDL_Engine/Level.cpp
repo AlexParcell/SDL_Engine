@@ -47,7 +47,27 @@ void Level::LoadObjectsFromJSON(std::string levelName)
 			continue;
 
 		Vector2 position = Vector2(objects[i]["Position"]["x"], objects[i]["Position"]["y"]);
-		GameObject* newObject = CreateObject(type);
+		
+		GameObject* newObject = nullptr;
+
+		if (type == Obj_Cat)
+		{
+			std::string name = objects[i]["Name"];
+			Personality p = Personality(
+				objects[i]["Personality"]["Openness"],
+				objects[i]["Personality"]["Conscientiousness"],
+				objects[i]["Personality"]["Extroversion"],
+				objects[i]["Personality"]["Agreeableness"],
+				objects[i]["Personality"]["Neuroticism"]
+			);
+			newObject = new Cat(type, name, p);
+			m_cats.push_back((Cat*)newObject);
+		}
+		else
+		{
+			newObject = CreateObject(type);
+		}
+
 		newObject->SetPosition(position);
 
 		m_objects.push_back(newObject);
@@ -118,9 +138,6 @@ GameObject* Level::CreateObject(int type)
 	{
 	case (Obj_Player):
 		newObject = new Player(type);
-		break;
-	case (Obj_Cat):
-		newObject = new Cat(type);
 		break;
 	default:
 		newObject = new GameObject(type);

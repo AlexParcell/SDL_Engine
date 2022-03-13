@@ -7,17 +7,16 @@
 
 #include "Cat.h"
 
-Cat::Cat(int type)
+Cat::Cat(int type, std::string name, Personality personality)
 	: GameObject(type),
-	m_moveUp(false),
-	m_moveLeft(false),
-	m_moveRight(false),
-	m_moveDown(false),
+	m_direction(0, 0),
 	m_frameTimer(0.0f),
 	m_moveTimer(0.0f),
 	m_meowTimer(0.0f),
 	m_timeSinceLastMeow(3.0f),
-	m_exclamationBox(nullptr)
+	m_exclamationBox(nullptr),
+	m_name(name),
+	m_personality(personality)
 {
 	srand(time(NULL));
 	m_collisionType = CT_Block;
@@ -26,6 +25,8 @@ Cat::Cat(int type)
 	m_spriteSize = Vector2(16, 16);
 	m_size = Vector2(32, 32);
 	m_zIndex = 32;
+	m_baselineEmotionalState = GetBaselineEmotionalState(m_personality);
+	m_emotionalState = m_baselineEmotionalState;
 }
 
 Cat::~Cat()
@@ -50,16 +51,7 @@ void Cat::OnOverlap(GameObject* other)
 
 	if (other->m_collisionType == CT_Block)
 	{
-		if (m_moveLeft || m_moveRight)
-		{
-			m_moveRight = !m_moveRight;
-			m_moveLeft = !m_moveLeft;
-		}
-		else if (m_moveUp || m_moveDown)
-		{
-			m_moveUp = !m_moveUp;
-			m_moveLeft = !m_moveDown;
-		}
+		m_direction *= -1;
 	}
 }
 
@@ -92,56 +84,47 @@ void Cat::Update(float deltaTime)
 	{
 		m_moveTimer = 0.0f;
 
-		int direction = rand() % 8;
-
-		m_moveLeft = false;
-		m_moveRight = false;
-		m_moveUp = false;
-		m_moveDown = false;
+		int direction = rand() % 4;
 
 		switch (direction)
 		{
 		case (0):
-			m_moveLeft = true;
+			m_direction = Vector2(-1, 0);
 			break;
 		case (1):
-			m_moveRight = true;
+			m_direction = Vector2(1, 0);
 			break;
 		case (2):
-			m_moveUp = true;
+			m_direction = Vector2(0, 1);
 			break;
 		case (3):
-			m_moveDown = true;
+			m_direction = Vector2(0, -1);
 			break;
 		}
 	}
 
 
-	// Sort out velocity and movement
-	m_velocity = Vector2(0, 0);
-	Vector2 direction = Vector2(0, 0);
-	if (m_moveUp)
+	// Sort out velocity and movemen
+	
+	if (m_direction.y == -1)
 	{
-		direction.y = -1;
 		m_spriteOffset.x = 16;
 	}
-	else if (m_moveDown)
+	else if (m_direction.y == 1)
 	{
-		direction.y = 1;
 		m_spriteOffset.x = 0;
 	}
-	else if (m_moveLeft)
+	else if (m_direction.x == -1)
 	{
-		direction.x = -1;
 		m_spriteOffset.x = 48;
 	}
-	else if (m_moveRight)
+	else if (m_direction.x == 1)
 	{
-		direction.x = 1;
 		m_spriteOffset.x = 32;
 	}
+	m_velocity = Vector2(0, 0);
 
-	m_velocity = direction * deltaTime * 100.0f;
+	m_velocity = m_direction * deltaTime * 100.0f;
 
 	if (m_velocity.magnitude() != 0)
 	{

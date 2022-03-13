@@ -149,6 +149,7 @@
     <ClInclude Include="AudioHandler.h" />
     <ClInclude Include="Cat.h" />
     <ClInclude Include="Constants.h" />
+    <ClInclude Include="EmotionUtilities.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="ImGui\imconfig.h" />
     <ClInclude Include="ImGui\imgui.h" />

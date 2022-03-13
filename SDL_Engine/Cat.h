@@ -1,14 +1,11 @@
 #pragma once
 
 #include "GameObject.h"
+#include "EmotionUtilities.h"
 
 class Cat : public GameObject
 {
-
-	bool m_moveUp;
-	bool m_moveDown;
-	bool m_moveLeft;
-	bool m_moveRight;
+	Vector2 m_direction;
 
 	float m_frameTimer;
 	float m_moveTimer;
@@ -19,7 +16,12 @@ class Cat : public GameObject
 	Sprite* m_exclamationBox;
 
 public:
-	Cat(int type);
+	EmotionalState m_emotionalState;
+	EmotionalState m_baselineEmotionalState;
+	Personality m_personality;
+	std::string m_name;
+
+	Cat(int type, std::string name, Personality personality);
 	~Cat();
 
 	virtual SDL_Rect GetBoundingBox();

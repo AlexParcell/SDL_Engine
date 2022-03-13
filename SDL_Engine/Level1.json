@@ -2053,6 +2053,14 @@
     },
     {
       "Type": "Cat",
+      "Name": "Simba",
+      "Personality": {
+        "Openness": 0.75,
+        "Conscientiousness": 0.1,
+        "Extroversion": 0.8,
+        "Agreeableness": 0.3,
+        "Neuroticism":  0.01
+      },
       "Position": {
         "x": 32,
         "y": 120
@@ -2060,6 +2068,14 @@
     },
     {
       "Type": "Cat",
+      "Name": "Geraldine",
+      "Personality": {
+        "Openness": 0.4,
+        "Conscientiousness": 0.9,
+        "Extroversion": 0.4,
+        "Agreeableness": 0.7,
+        "Neuroticism": 0.2
+      },
       "Position": {
         "x": 64,
         "y": 120
@@ -2067,6 +2083,14 @@
     },
     {
       "Type": "Cat",
+      "Name": "Jake",
+      "Personality": {
+        "Openness": 0.9,
+        "Conscientiousness": 0.1,
+        "Extroversion": 0.5,
+        "Agreeableness": 0.7,
+        "Neuroticism": 0.8
+      },
       "Position": {
         "x": 128,
         "y": 120
@@ -2074,13 +2098,14 @@
     },
     {
       "Type": "Cat",
-      "Position": {
-        "x": 196,
-        "y": 120
-      }
-    },
-    {
-      "Type": "Cat",
+      "Name": "Luna",
+      "Personality": {
+        "Openness": 0.1,
+        "Conscientiousness": 0.1,
+        "Extroversion": 0.1,
+        "Agreeableness": 0.1,
+        "Neuroticism": 0.9
+      },
       "Position": {
         "x": 32,
         "y": 184

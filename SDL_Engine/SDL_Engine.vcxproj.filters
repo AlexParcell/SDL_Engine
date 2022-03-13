@@ -70,6 +70,7 @@
     </ClInclude>
     <ClInclude Include="InterfaceHandler.h" />
     <ClInclude Include="Cat.h" />
+    <ClInclude Include="EmotionUtilities.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ImGui">
