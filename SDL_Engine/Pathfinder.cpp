@@ -56,9 +56,6 @@ std::vector<Vector2> Pathfinder::GetPath(Vector2 begin, Vector2 end)
 		std::vector<GameObject*> adjacentObjects = GetAdjacentTiles(cursor->m_obj);
 		for (GameObject* obj : adjacentObjects)
 		{
-			if (obj->m_collisionType == CT_Block)
-				continue;
-
 			Node* node = GetNode(obj);
 			if (!node->m_open && !node->m_closed)
 			{
@@ -148,13 +145,19 @@ std::vector<GameObject*> Pathfinder::GetAdjacentTiles(GameObject* tile)
 			int adjusted_x = centre_x + x;
 			int adjusted_y = centre_y + y;
 			
-			if (adjusted_x < 0 || adjusted_x > (MAP_SIZE_X / TILE_SIZE))
+			if (adjusted_x < 0 || adjusted_x >= (MAP_SIZE_X / TILE_SIZE))
 				continue;
 
-			if (adjusted_y < 0 || adjusted_y > (MAP_SIZE_Y / TILE_SIZE))
+			if (adjusted_y < 0 || adjusted_y >= (MAP_SIZE_Y / TILE_SIZE))
 				continue;
 
-			adjacents.push_back(m_tilemap[adjusted_x][adjusted_y]);
+			GameObject* obj = m_tilemap[adjusted_x][adjusted_y];
+
+			// Ignore blocked tiles
+			if (obj->m_collisionType == CT_Block)
+				continue;
+
+			adjacents.push_back(obj);
 		}
 	}
 

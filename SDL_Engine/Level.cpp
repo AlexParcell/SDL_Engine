@@ -139,6 +139,7 @@ GameObject* Level::CreateObject(int type)
 	{
 	case (Obj_Player):
 		newObject = new Player(type);
+		m_player = (Player*)newObject;
 		break;
 	default:
 		newObject = new GameObject(type);

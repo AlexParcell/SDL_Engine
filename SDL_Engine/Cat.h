@@ -8,8 +8,6 @@ class Text;
 
 class Cat : public GameObject
 {
-	Vector2 m_direction;
-
 	float m_frameTimer;
 	float m_moveTimer;
 	float m_timeSinceLastMeow;
@@ -19,6 +17,7 @@ class Cat : public GameObject
 	Text* m_nametag;
 
 public:
+	Vector2 m_direction;
 	EmotionalState m_emotionalState;
 	EmotionalState m_baselineEmotionalState;
 	Personality m_personality;

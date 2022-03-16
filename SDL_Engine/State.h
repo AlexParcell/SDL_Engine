@@ -1,6 +1,8 @@
 #pragma once
 
 class Cat;
+class Vector2;
+#include <vector>
 
 enum States
 {
@@ -22,6 +24,7 @@ public:
 
 class DefaultState
 {
+	std::vector<Vector2> m_path;
 public:
 	int m_type;
 	DefaultState() : m_type(STATE_DEFAULT) {}

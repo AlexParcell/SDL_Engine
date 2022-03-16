@@ -5,6 +5,17 @@
 #include <vector>
 #include <SDL.h>
 
+static bool AABB(SDL_Rect a, SDL_Rect b)
+{
+	if (a.x < b.x + b.w &&
+		a.x + a.w > b.x &&
+		a.y < b.y + b.h &&
+		a.h + a.y > b.y)
+		return true;
+		
+	return false;
+}
+
 class QuadTree
 {
 	Vector2 m_origin;
@@ -120,17 +131,6 @@ public:
 				return false;
 			}
 		}
-	}
-
-	static bool AABB(SDL_Rect a, SDL_Rect b)
-	{
-		if (a.x < b.x + b.w &&
-			a.x + a.w > b.x &&
-			a.y < b.y + b.h &&
-			a.h + a.y > b.y)
-			return true;
-		
-		return false;
 	}
 
 	void GetCollisions(GameObject* a, std::vector<GameObject*>& results)

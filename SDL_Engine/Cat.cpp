@@ -69,11 +69,6 @@ SDL_Rect Cat::GetBoundingBox()
 void Cat::OnOverlap(GameObject* other)
 {
 	GameObject::OnOverlap(other);
-
-	if (other->m_collisionType == CT_Block)
-	{
-		m_direction *= -1;
-	}
 }
 
 void Cat::Meow()
@@ -172,54 +167,36 @@ void Cat::Update(float deltaTime)
 	// Update our state
 	m_state->Update(deltaTime, this);
 
-	// Pick a movement direction
-	const float directionInterval = 2.0f;
-	m_moveTimer += deltaTime;
-
-	if (m_moveTimer > directionInterval)
+	// Sort out velocity and movement
+	
+	if (abs(m_direction.x) > abs(m_direction.y))
 	{
-		m_moveTimer = 0.0f;
-
-		int direction = rand() % 4;
-
-		switch (direction)
+		if (m_direction.x < 0)
 		{
-		case (0):
-			m_direction = Vector2(-1, 0);
-			break;
-		case (1):
-			m_direction = Vector2(1, 0);
-			break;
-		case (2):
-			m_direction = Vector2(0, 1);
-			break;
-		case (3):
-			m_direction = Vector2(0, -1);
-			break;
+			m_spriteOffset.x = 48; // left
+		}
+		else if (m_direction.x > 0)
+		{
+			m_spriteOffset.x = 32; // right
+		}
+	}
+	else
+	{
+		if (m_direction.y < 0)
+		{
+			m_spriteOffset.x = 16; // up
+		}
+		else if (m_direction.y > 0)
+		{
+			m_spriteOffset.x = 0; // down
 		}
 	}
 
-	// Sort out velocity and movement
-	
-	if (m_direction.y == -1)
-	{
-		m_spriteOffset.x = 16;
-	}
-	else if (m_direction.y == 1)
-	{
-		m_spriteOffset.x = 0;
-	}
-	else if (m_direction.x == -1)
-	{
-		m_spriteOffset.x = 48;
-	}
-	else if (m_direction.x == 1)
-	{
-		m_spriteOffset.x = 32;
-	}
 	m_velocity = Vector2(0, 0);
 
 	m_velocity = m_direction * deltaTime * 100.0f;
+	if (m_velocity.magnitude() > 100)
+		m_velocity = Vector2(0, 0);
 
 	if (m_velocity.magnitude() != 0)
 	{

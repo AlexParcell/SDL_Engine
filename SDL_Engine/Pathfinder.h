@@ -5,7 +5,7 @@
 class GameObject;
 
 #define MAP_SIZE_X 640
-#define MAP_SIZE_Y 352
+#define MAP_SIZE_Y 384
 #define TILE_SIZE 32
 
 class Pathfinder
