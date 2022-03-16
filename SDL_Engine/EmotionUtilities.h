@@ -53,6 +53,9 @@ struct EmotionalState
 		m_emotionalAxis = state.m_emotionalAxis;
 	}
 
+	// So many operator overloads..
+	// How many times am I gonna have to write a vector class in my life?
+
 	float& operator[](int i)
 	{
 		if (i < 0 || i > NumEmotionalAxis)
@@ -369,19 +372,19 @@ static std::string g_sMoodValues[NumMoods] =
 static float g_PersonalityBiasesPositive[NumEmotionalAxis][NumPersonalityAxis] =
 {
 	//  O		C		E		A		N
-	{	0.1,	0,		0,		0,		-0.2	},  // Joy
-	{	0.3,	-0.25,	0,		0.3,	0		},  // Trust
-	{	0,		0.1,	0,		0,		0.25	},  // Fear
-	{	0,		0,		0,		0,		-0.4	},  // Surprise
+	{	1,		0,		1,		1,		1	},  // Joy
+	{	1,		0,		1,		1,		-1	},  // Trust
+	{	-1,		0,		0,		0,		1	},  // Fear
+	{	-1,		0,		1,		1,		-1	},  // Surprise
 };
 
 static float g_PersonalityBiasesNegative[NumEmotionalAxis][NumPersonalityAxis] =
 {
 	//  O		C		E		A		N
-	{	0.1,	0,		0,		0,		-0.2	},  // Sadness
-	{	0.3,	-0.25,	0,		0.3,	0		},  // Disgust
-	{	0,		0.1,	0,		0,		0.25	},  // Anger
-	{	0,		0,		0,		0,		-0.4	},  // Anticipation
+	{	-1,		1,		1,		0,		1	},  // Sadness
+	{	-1,		0,		0,		-1,		1	},  // Disgust
+	{	0,		-1,		0,		0,		1	},  // Anger
+	{	-1,		1,		-1,		-1,		1	},  // Anticipation
 };
 
 // This matrix helps form the baseline personalities
@@ -390,7 +393,7 @@ static float g_BaselineEmotionalStateBiases[NumEmotionalAxis][NumPersonalityAxis
 	//  O		C		E		A		N
 	{	0.2,	0,		0.3,	0,		-0.4	},  // Joy/Sadness
 	{	0.3,	-0.4,	0.2,	0.3,	0		},  // Trust/Disgust
-	{	0,		0.3,	0,		-0.2,	0.2	},  // Fear/Anger
+	{	0,		0.3,	0,		-0.2,	0.2		},  // Fear/Anger
 	{	0,		-0.3,	0,		0,		-0.3	},  // Surprise/Anticipation
 };
 
@@ -437,16 +440,19 @@ static EmotionalState AdjustEmotionalImpulse(EmotionalState impulse, Personality
 
 	for (int i = 0; i < NumEmotionalAxis; i++)
 	{
+		float accumulatedBias = 0.0f;
 		for (int j = 0; j < NumPersonalityAxis; j++)
 		{
-			adjustedImpulse[i] += ((adjustedImpulse[i] < 0) ? g_PersonalityBiasesNegative[i][j] : g_PersonalityBiasesPositive[i][j] * p.GetAxis(j));
+			float weight = ((adjustedImpulse[i] < 0) ? g_PersonalityBiasesNegative[i][j] : g_PersonalityBiasesPositive[i][j]);
+			accumulatedBias += (weight * p.GetAxis(j));
 		}
+		adjustedImpulse[i] *= accumulatedBias;
 	}
 
 	return adjustedImpulse;
 }
 
-static std::pair<EmotionalState, std::string> IdentifyEmotionalState(EmotionalState& state)
+static int IdentifyEmotionalState(EmotionalState& state)
 {
 	int lowestValueFound = -1;
 	float lowestDistanceFound = FLT_MAX;
@@ -463,7 +469,7 @@ static std::pair<EmotionalState, std::string> IdentifyEmotionalState(EmotionalSt
 	}
 
 	if (lowestValueFound != -1)
-		return std::pair<EmotionalState, std::string>(g_fMoodValues[lowestValueFound], g_sMoodValues[lowestValueFound]);
+		return lowestValueFound;
 }
 
 class EmotionalEvent : public Event
@@ -480,7 +486,7 @@ public:
 	{
 		m_bus = new EventBus();
 	}
-
+	
 	static void Free()
 	{
 		delete m_bus;

@@ -117,7 +117,6 @@ int main(int argc, char* args[])
 			LevelHandler::Update(deltaTime);
 			InterfaceHandler::Update(deltaTime);
 
-
 			ImGui::Render();
 
 			SDL_RenderClear(g_renderer);
@@ -130,6 +129,7 @@ int main(int argc, char* args[])
 
 		// Tidy up and fuck off
 		EmotionalEventHandler::Free();
+		InterfaceHandler::Free();
 		LevelHandler::Free();
 		AudioHandler::Free();
 	}

@@ -113,6 +113,7 @@ void Level::Update(float deltaTime)
 		m_tree->GetCollisions(obj, results);
 		for (GameObject* other : results)
 		{
+			other->OnOverlap(obj);
 			obj->OnOverlap(other);
 		}
 	}

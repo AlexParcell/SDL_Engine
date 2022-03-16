@@ -2,14 +2,15 @@
 
 extern SDL_Renderer* g_renderer;
 
-Text::Text(std::string text, SDL_Color colour)
+Text::Text(std::string text, SDL_Color colour, int fontsize)
 	: m_texture(nullptr),
-	m_font(TTF_OpenFont("lazy.ttf", 128))
+	m_fontsize(fontsize)
 {
+	m_font = TTF_OpenFont("lazy.ttf", fontsize);
 	SDL_Surface* surface = TTF_RenderText_Solid(m_font, text.c_str(), colour);
 	m_texture = SDL_CreateTextureFromSurface(g_renderer, surface);
 	SDL_FreeSurface(surface);
-	m_size = Vector2(128, 48);
+	m_size = Vector2(text.size() * (fontsize * 0.55), fontsize);
 }
 
 Text::~Text()

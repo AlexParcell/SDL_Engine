@@ -62,14 +62,13 @@ protected:
 	Sprite* m_sprite;
 
 	Vector2 m_velocity;
-
-	Vector2 m_position;
 	Vector2 m_size;
 
 	Vector2 m_spriteOffset;
 	Vector2 m_spriteSize;
 
 public:
+	Vector2 m_position;
 	bool m_moved;
 	int m_zIndex;
 	int m_collisionType;

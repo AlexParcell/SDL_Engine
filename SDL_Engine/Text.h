@@ -10,13 +10,14 @@ class Text
 {
 	TTF_Font* m_font;
 	SDL_Texture* m_texture;
+	int m_fontsize;
+
+public:
 
 	Vector2 m_position;
 	Vector2 m_size;
 
-public:
-
-	Text(std::string text, SDL_Color colour);
+	Text(std::string text, SDL_Color colour, int fontsize);
 	~Text();
 
 	void Render();

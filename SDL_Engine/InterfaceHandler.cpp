@@ -58,6 +58,70 @@ void HeadsUpDisplay::Update(float deltaTime)
 		EmotionalEventHandler::m_bus->publish(e);
 		delete e;
 	}
+
+	if (ImGui::Button("Stimulate Sadness"))
+	{
+		EmotionalState impulse;
+		impulse[JoySadness] = -1.0f;
+		EmotionalEvent* e = new EmotionalEvent(impulse);
+		EmotionalEventHandler::m_bus->publish(e);
+		delete e;
+	}
+
+	if (ImGui::Button("Stimulate Trust"))
+	{
+		EmotionalState impulse;
+		impulse[TrustDisgust] = 1.0f;
+		EmotionalEvent* e = new EmotionalEvent(impulse);
+		EmotionalEventHandler::m_bus->publish(e);
+		delete e;
+	}
+
+	if (ImGui::Button("Stimulate Disgust"))
+	{
+		EmotionalState impulse;
+		impulse[TrustDisgust] = -1.0f;
+		EmotionalEvent* e = new EmotionalEvent(impulse);
+		EmotionalEventHandler::m_bus->publish(e);
+		delete e;
+	}
+
+	if (ImGui::Button("Stimulate Fear"))
+	{
+		EmotionalState impulse;
+		impulse[FearAnger] = 1.0f;
+		EmotionalEvent* e = new EmotionalEvent(impulse);
+		EmotionalEventHandler::m_bus->publish(e);
+		delete e;
+	}
+
+	if (ImGui::Button("Stimulate Anger"))
+	{
+		EmotionalState impulse;
+		impulse[FearAnger] = -1.0f;
+		EmotionalEvent* e = new EmotionalEvent(impulse);
+		EmotionalEventHandler::m_bus->publish(e);
+		delete e;
+	}
+
+
+	if (ImGui::Button("Stimulate Surprise"))
+	{
+		EmotionalState impulse;
+		impulse[SurpriseAnticipation] = 1.0f;
+		EmotionalEvent* e = new EmotionalEvent(impulse);
+		EmotionalEventHandler::m_bus->publish(e);
+		delete e;
+	}
+
+	if (ImGui::Button("Stimulate Anticipation"))
+	{
+		EmotionalState impulse;
+		impulse[SurpriseAnticipation] = -1.0f;
+		EmotionalEvent* e = new EmotionalEvent(impulse);
+		EmotionalEventHandler::m_bus->publish(e);
+		delete e;
+	}
 	
 	for (Cat* cat : LevelHandler::GetActiveLevel()->GetCats())
 	{
@@ -66,7 +130,7 @@ void HeadsUpDisplay::Update(float deltaTime)
 		if (showThisCat)
 		{
 			ImGui::Text(cat->m_name.c_str());
-			std::string currentEmotion = "Current Emotion: " + IdentifyEmotionalState(cat->m_emotionalState).second;
+			std::string currentEmotion = "Current Emotion: " + g_sMoodValues[cat->m_currentEmotion];
 			ImGui::Text(currentEmotion.c_str());
 			ImGui::InputFloat4("Emotional State", &cat->m_emotionalState.m_emotionalAxis[0]);
 

@@ -31,6 +31,8 @@
     <ClCompile Include="InterfaceHandler.cpp" />
     <ClCompile Include="Cat.cpp" />
     <ClCompile Include="EmotionUtilities.cpp" />
+    <ClCompile Include="State.cpp" />
+    <ClCompile Include="Pathfinder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sprite.h" />
@@ -73,6 +75,8 @@
     <ClInclude Include="Cat.h" />
     <ClInclude Include="EmotionUtilities.h" />
     <ClInclude Include="EventHandler.h" />
+    <ClInclude Include="State.h" />
+    <ClInclude Include="Pathfinder.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ImGui">

@@ -6,17 +6,20 @@
 #include <time.h> 
 
 #include "Cat.h"
+#include "Text.h"
 
 Cat::Cat(int type, std::string name, Personality personality)
 	: GameObject(type),
 	m_direction(0, 0),
 	m_frameTimer(0.0f),
 	m_moveTimer(0.0f),
-	m_meowTimer(0.0f),
 	m_timeSinceLastMeow(3.0f),
 	m_exclamationBox(nullptr),
 	m_name(name),
-	m_personality(personality)
+	m_personality(personality),
+	m_currentEmotion(0),
+	m_lastEmotion(0),
+	m_nametag(nullptr)
 {
 	srand(time(NULL));
 	m_collisionType = CT_Block;
@@ -28,17 +31,21 @@ Cat::Cat(int type, std::string name, Personality personality)
 	m_baselineEmotionalState = GetBaselineEmotionalState(m_personality);
 	m_emotionalState = m_baselineEmotionalState;
 	EmotionalEventHandler::m_bus->subscribe(this, &Cat::RecieveEmotionalEvent);
+	m_nametag = new Text(m_name, { 255, 255, 255 }, 16);
 }
 
 Cat::~Cat()
 {
+	delete m_state;
 	delete m_exclamationBox;
+	delete m_nametag;
 }
 
 void Cat::RecieveEmotionalEvent(EmotionalEvent* e)
 {
 	EmotionalState adjustedImpulse = AdjustEmotionalImpulse(e->m_impulse, m_personality);
-	EmotionalState newEmotionalState = m_emotionalState + adjustedImpulse;
+	std::cout << "Applying impulse of " << adjustedImpulse[0] << ", " << adjustedImpulse[1] << ", " << adjustedImpulse[2] << ", " << adjustedImpulse[3] << " to " << m_name << std::endl;
+ 	EmotionalState newEmotionalState = m_emotionalState + adjustedImpulse;
 
 	for (float& v : newEmotionalState.m_emotionalAxis)
 	{
@@ -75,22 +82,95 @@ void Cat::Meow()
 	AudioHandler::PlaySoundEffect(SFX_Meow);
 }
 
+State* Cat::MakeNewState(int type)
+{
+	State* newState = nullptr;
+
+	switch (type)
+	{
+	case (States::STATE_DEFAULT):
+		newState = (State*) new DefaultState;
+		break;
+	}
+
+	return newState;
+}
+
+int Cat::GetStateForEmotion()
+{
+	switch (m_currentEmotion)
+	{
+	case (Moods::Joy):
+	case (Moods::Trust):
+	case (Moods::Fear):
+	case (Moods::Surprise):
+	case (Moods::Sadness):
+	case (Moods::Disgust):
+	case (Moods::Anger):
+	case (Moods::Anticipation):
+	case (Moods::Love):
+	case (Moods::Submission):
+	case (Moods::Alarm):
+	case (Moods::Disappointment):
+	case (Moods::Remorse):
+	case (Moods::Contempt):
+	case (Moods::Aggression):
+	case (Moods::Optimism):
+	case (Moods::Guilt):
+	case (Moods::Curiousity):
+	case (Moods::Pride):
+	case (Moods::Fatalism):
+	case (Moods::Delight):
+	case (Moods::Sentimentality):
+	case (Moods::Shame):
+	case (Moods::Outrage):
+	case (Moods::Pessimism):
+	case (Moods::Morbidness):
+	case (Moods::Dominance):
+	case (Moods::Anxiety):
+	default:
+		return STATE_DEFAULT;
+		break;
+	}
+}
+
 void Cat::Update(float deltaTime)
 {
 	GameObject::Update(deltaTime);
 
-	m_emotionalState = lerp(m_emotionalState, m_baselineEmotionalState, deltaTime);
 
-	// Do we wanna meow?
-	m_timeSinceLastMeow += deltaTime;
-	static float meowInterval = 2.0f;
-	m_meowTimer += deltaTime;
-	if (m_meowTimer > meowInterval)
+	// If we got no state, better sort that out
+	if (m_state == nullptr)
 	{
-		m_meowTimer = 0.0f;
-		if (rand() % 10 == 0)
-			Meow();
+		int stateToBeOn = GetStateForEmotion();
+		m_state = MakeNewState(stateToBeOn);
+		m_state->Enter(this);
 	}
+
+	m_emotionalState = lerp(m_emotionalState, m_baselineEmotionalState, deltaTime * 0.01);
+	m_currentEmotion = IdentifyEmotionalState(m_emotionalState);
+	if (m_currentEmotion != m_lastEmotion)
+	{
+		// Signal the new emotion
+		Meow();
+
+		// Pick a new state if need be
+		int stateToBeOn = GetStateForEmotion();
+		if (stateToBeOn != m_state->m_type)
+		{
+			m_state->Exit(this);
+			delete m_state;
+
+			m_state = MakeNewState(stateToBeOn);
+			m_state->Enter(this);
+		}
+
+		std::cout << m_name << "'s emotional state changed from " << g_sMoodValues[m_lastEmotion] << " to " << g_sMoodValues[m_currentEmotion] << std::endl;
+	}
+	m_timeSinceLastMeow += deltaTime;
+
+	// Update our state
+	m_state->Update(deltaTime, this);
 
 	// Pick a movement direction
 	const float directionInterval = 2.0f;
@@ -119,8 +199,7 @@ void Cat::Update(float deltaTime)
 		}
 	}
 
-
-	// Sort out velocity and movemen
+	// Sort out velocity and movement
 	
 	if (m_direction.y == -1)
 	{
@@ -171,11 +250,15 @@ void Cat::Update(float deltaTime)
 	}
 
 	m_position += m_velocity;
+	m_lastEmotion = m_currentEmotion;
 }
 
 void Cat::Render()
 {
 	GameObject::Render();
+
+	m_nametag->m_position = Vector2((m_position.x + (m_size.x / 2)) - m_nametag->m_size.x / 2, m_position.y - 16);
+	m_nametag->Render();
 
 	if (m_timeSinceLastMeow < 1.0f)
 	{
@@ -186,7 +269,7 @@ void Cat::Render()
 		src.h = 16;
 		SDL_Rect dest;
 		dest.x = m_position.x;
-		dest.y = m_position.y - 32;
+		dest.y = m_position.y - 48;
 		dest.w = 32;
 		dest.h = 32;
 		m_exclamationBox->Render(&src, &dest);
