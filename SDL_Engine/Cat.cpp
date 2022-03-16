@@ -12,7 +12,6 @@ Cat::Cat(int type, std::string name, Personality personality)
 	: GameObject(type),
 	m_direction(0, 0),
 	m_frameTimer(0.0f),
-	m_moveTimer(0.0f),
 	m_timeSinceLastMeow(3.0f),
 	m_exclamationBox(nullptr),
 	m_name(name),
@@ -83,8 +82,11 @@ State* Cat::MakeNewState(int type)
 
 	switch (type)
 	{
-	case (States::STATE_DEFAULT):
-		newState = (State*) new DefaultState;
+	case (States::STATE_FOLLOWPLAYER):
+		newState = (State*) new State_FollowPlayer;
+		break;
+	case (States::STATE_WANDER):
+		newState = (State*) new State_Wander;
 		break;
 	}
 
@@ -96,35 +98,91 @@ int Cat::GetStateForEmotion()
 	switch (m_currentEmotion)
 	{
 	case (Moods::Joy):
+		return STATE_WANDER;
+		break;
 	case (Moods::Trust):
+		return STATE_WANDER;
+		break;
 	case (Moods::Fear):
+		return STATE_WANDER;
+		break;
 	case (Moods::Surprise):
+		return STATE_FOLLOWPLAYER;
+		break;
 	case (Moods::Sadness):
+		return STATE_FOLLOWPLAYER;
+		break;
 	case (Moods::Disgust):
+		return STATE_FOLLOWPLAYER;
+		break;
 	case (Moods::Anger):
+		return STATE_FOLLOWPLAYER;
+		break;
 	case (Moods::Anticipation):
+		return STATE_FOLLOWPLAYER;
+		break;
 	case (Moods::Love):
+		return STATE_FOLLOWPLAYER;
+		break;
 	case (Moods::Submission):
+		return STATE_FOLLOWPLAYER;
+		break;
 	case (Moods::Alarm):
+		return STATE_FOLLOWPLAYER;
+		break;
 	case (Moods::Disappointment):
+		return STATE_FOLLOWPLAYER;
+		break;
 	case (Moods::Remorse):
+		return STATE_FOLLOWPLAYER;
+		break;
 	case (Moods::Contempt):
+		return STATE_FOLLOWPLAYER;
+		break;
 	case (Moods::Aggression):
+		return STATE_FOLLOWPLAYER;
+		break;
 	case (Moods::Optimism):
+		return STATE_FOLLOWPLAYER;
+		break;
 	case (Moods::Guilt):
+		return STATE_FOLLOWPLAYER;
+		break;
 	case (Moods::Curiousity):
+		return STATE_FOLLOWPLAYER;
+		break;
 	case (Moods::Pride):
+		return STATE_FOLLOWPLAYER;
+		break;
 	case (Moods::Fatalism):
+		return STATE_FOLLOWPLAYER;
+		break;
 	case (Moods::Delight):
+		return STATE_FOLLOWPLAYER;
+		break;
 	case (Moods::Sentimentality):
+		return STATE_FOLLOWPLAYER;
+		break;
 	case (Moods::Shame):
+		return STATE_FOLLOWPLAYER;
+		break;
 	case (Moods::Outrage):
+		return STATE_FOLLOWPLAYER;
+		break;
 	case (Moods::Pessimism):
+		return STATE_FOLLOWPLAYER;
+		break;
 	case (Moods::Morbidness):
+		return STATE_FOLLOWPLAYER;
+		break;
 	case (Moods::Dominance):
+		return STATE_FOLLOWPLAYER;
+		break;
 	case (Moods::Anxiety):
+		return STATE_FOLLOWPLAYER;
+		break;
 	default:
-		return STATE_DEFAULT;
+		return STATE_FOLLOWPLAYER;
 		break;
 	}
 }
@@ -132,7 +190,6 @@ int Cat::GetStateForEmotion()
 void Cat::Update(float deltaTime)
 {
 	GameObject::Update(deltaTime);
-
 
 	// If we got no state, better sort that out
 	if (m_state == nullptr)

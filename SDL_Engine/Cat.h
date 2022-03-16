@@ -9,7 +9,6 @@ class Text;
 class Cat : public GameObject
 {
 	float m_frameTimer;
-	float m_moveTimer;
 	float m_timeSinceLastMeow;
 	State* m_state;
 

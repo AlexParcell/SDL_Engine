@@ -7,23 +7,24 @@
 #include "Level.h"
 #include <iostream>
 
-void DefaultState::Enter(Cat* cat)
+void State_FollowPlayer::Enter(Cat* cat)
 {
 	std::cout << "Entering default state" << std::endl;
 }
 
-void DefaultState::Exit(Cat* cat)
+void State_FollowPlayer::Exit(Cat* cat)
 {
 	std::cout << "Exiting default state" << std::endl;
 }
 
-void DefaultState::Update(float dt, Cat* cat)
+void State_FollowPlayer::Update(float dt, Cat* cat)
 {
 	Vector2 goal = LevelHandler::GetActiveLevel()->m_player->m_position + Vector2(0, 64);
 
-	if ((cat->m_position - goal).magnitude() < 32.0f)
+	if ((cat->m_position - goal).magnitude() < 64.0f)
 	{
 		cat->m_direction = Vector2(0, 0);
+		m_path.clear();
 		return;
 	}
 
@@ -45,4 +46,47 @@ void DefaultState::Update(float dt, Cat* cat)
 		return;
 	}
 	cat->m_direction = (point - cat->m_position).normalize();
+}
+
+void State_Wander::Enter(Cat* cat)
+{
+}
+
+void State_Wander::Exit(Cat* cat)
+{
+}
+
+void State_Wander::Update(float dt, Cat* cat)
+{
+	const float interval = 5.0f;
+	m_moveTimer += dt;
+	if (m_moveTimer > interval)
+	{
+		int axis = rand() % 2;
+		if (axis == 0)
+		{
+			int direction = rand() % 2;
+			if (direction == 0)
+			{
+				cat->m_direction = Vector2(1, 0);
+			}
+			else
+			{
+				cat->m_direction = Vector2(-1, 0);
+			}
+		}
+		else
+		{
+			int direction = rand() % 2;
+			if (direction == 0)
+			{
+				cat->m_direction = Vector2(0, 1);
+			}
+			else
+			{
+				cat->m_direction = Vector2(0, -1);
+			}
+		}
+		m_moveTimer = 0.0f;
+	}
 }
