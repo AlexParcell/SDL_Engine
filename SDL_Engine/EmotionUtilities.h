@@ -472,11 +472,14 @@ static int IdentifyEmotionalState(EmotionalState& state)
 		return lowestValueFound;
 }
 
+class Cat;
+
 class EmotionalEvent : public Event
 {
 public:
-	EmotionalEvent(EmotionalState impulse) : m_impulse(impulse) {}
+	EmotionalEvent(EmotionalState impulse, std::vector<Cat*> affectedCats) : m_impulse(impulse), m_affectedCats(affectedCats) {}
 	EmotionalState m_impulse;
+	std::vector<Cat*> m_affectedCats;
 };
 
 class EmotionalEventHandler
@@ -490,6 +493,13 @@ public:
 	static void Free()
 	{
 		delete m_bus;
+	}
+
+	static void SendEmotionalEvent(EmotionalState state, std::vector<Cat*> affectedCats)
+	{
+		EmotionalEvent* event = new EmotionalEvent(state, affectedCats);
+		m_bus->publish(event);
+		delete event;
 	}
 
 	static EventBus* m_bus;

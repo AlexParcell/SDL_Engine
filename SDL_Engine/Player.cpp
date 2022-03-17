@@ -108,35 +108,6 @@ void Player::OnKeyDown(SDL_Keycode key)
 {
 	GameObject::OnKeyDown(key);
 
-	if (key == SDLK_1)
-		AudioHandler::PlaySoundEffect(SFX_Low);
-
-	if (key == SDLK_2)
-		AudioHandler::PlaySoundEffect(SFX_Medium);
-
-	if (key == SDLK_3)
-		AudioHandler::PlaySoundEffect(SFX_High);
-
-	if (key == SDLK_4)
-		AudioHandler::PlaySoundEffect(SFX_Scratch);
-
-	if (key == SDLK_5)
-	{
-		if (Mix_PlayingMusic() == 0)
-		{
-			AudioHandler::PlaySong(SONG_Beat);
-		}
-		else
-		{
-			AudioHandler::ToggleSong();
-		}
-	}
-
-	if (key == SDLK_6)
-	{
-		AudioHandler::StopSong();
-	}
-
 	if (key == SDLK_w)
 	{
 		m_moveUp = true;

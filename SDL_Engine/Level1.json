@@ -1,13 +1,6 @@
 {
   "LevelData": [
     {
-      "Type": "Player",
-      "Position": {
-        "x": 0,
-        "y": 272
-      }
-    },
-    {
       "Type": "WallHigher",
       "Position": {
         "x": 0,
@@ -99,7 +92,7 @@
       }
     },
     {
-      "Type": "Ceiling",
+      "Type": "WallHigher",
       "Position": {
         "x": 416,
         "y": 0
@@ -246,7 +239,7 @@
       }
     },
     {
-      "Type": "Ceiling",
+      "Type": "Wall",
       "Position": {
         "x": 416,
         "y": 32
@@ -393,7 +386,7 @@
       }
     },
     {
-      "Type": "Ceiling",
+      "Type": "WallLower",
       "Position": {
         "x": 416,
         "y": 64
@@ -540,7 +533,7 @@
       }
     },
     {
-      "Type": "Ceiling",
+      "Type": "WoodDark",
       "Position": {
         "x": 416,
         "y": 96
@@ -687,14 +680,14 @@
       }
     },
     {
-      "Type": "Ceiling",
+      "Type": "Wood",
       "Position": {
         "x": 416,
         "y": 128
       }
     },
     {
-      "Type": "WoodDark",
+      "Type": "Wood",
       "Position": {
         "x": 448,
         "y": 128
@@ -834,14 +827,14 @@
       }
     },
     {
-      "Type": "Ceiling",
+      "Type": "Wood",
       "Position": {
         "x": 416,
         "y": 160
       }
     },
     {
-      "Type": "WoodDark",
+      "Type": "Wood",
       "Position": {
         "x": 448,
         "y": 160
@@ -981,14 +974,14 @@
       }
     },
     {
-      "Type": "WallHigher",
+      "Type": "Wood",
       "Position": {
         "x": 416,
         "y": 192
       }
     },
     {
-      "Type": "WoodDark",
+      "Type": "Wood",
       "Position": {
         "x": 448,
         "y": 192
@@ -1128,14 +1121,14 @@
       }
     },
     {
-      "Type": "Wall",
+      "Type": "Wood",
       "Position": {
         "x": 416,
         "y": 224
       }
     },
     {
-      "Type": "WoodDark",
+      "Type": "Wood",
       "Position": {
         "x": 448,
         "y": 224
@@ -1275,14 +1268,14 @@
       }
     },
     {
-      "Type": "WallLower",
+      "Type": "Wood",
       "Position": {
         "x": 416,
         "y": 256
       }
     },
     {
-      "Type": "WoodDark",
+      "Type": "Wood",
       "Position": {
         "x": 448,
         "y": 256
@@ -1422,14 +1415,14 @@
       }
     },
     {
-      "Type": "WoodDark",
+      "Type": "Wood",
       "Position": {
         "x": 416,
         "y": 288
       }
     },
     {
-      "Type": "WoodDark",
+      "Type": "Wood",
       "Position": {
         "x": 448,
         "y": 288
@@ -2059,11 +2052,11 @@
         "Conscientiousness": 0.1,
         "Extroversion": 0.8,
         "Agreeableness": 0.3,
-        "Neuroticism":  0.01
+        "Neuroticism": 0.01
       },
       "Position": {
-        "x": 32,
-        "y": 120
+        "x": 64,
+        "y": 200
       }
     },
     {
@@ -2077,7 +2070,7 @@
         "Neuroticism": 0.2
       },
       "Position": {
-        "x": 64,
+        "x": 96,
         "y": 120
       }
     },
@@ -2092,7 +2085,7 @@
         "Neuroticism": 0.8
       },
       "Position": {
-        "x": 128,
+        "x": 200,
         "y": 120
       }
     },
@@ -2107,7 +2100,7 @@
         "Neuroticism": 0.9
       },
       "Position": {
-        "x": 32,
+        "x": 264,
         "y": 184
       }
     }

@@ -1,4 +1,5 @@
 #include "InputHandler.h"
+#include "InterfaceHandler.h"
 #include "LevelHandler.h"
 #include "Level.h"
 #include "GameObject.h"
@@ -40,6 +41,26 @@ void InputHandler::Update(float deltaTime)
 			}
 		}
 		break;
+		case (SDL_MOUSEBUTTONDOWN):
+		{
+			if (e.button.button == SDL_BUTTON_LEFT)
+				InterfaceHandler::MouseButtonDown();
+		}
+		break;
+		case (SDL_MOUSEBUTTONUP):
+		{
+			if (e.button.button == SDL_BUTTON_LEFT)
+				InterfaceHandler::MouseButtonUp();
+		}
+		break;
 		}
 	}
+}
+
+Vector2 InputHandler::GetMousePosition()
+{
+	int mouse_x;
+	int mouse_y;
+	SDL_GetMouseState(&mouse_x, &mouse_y);
+	return Vector2((float)mouse_x, (float)mouse_y);
 }

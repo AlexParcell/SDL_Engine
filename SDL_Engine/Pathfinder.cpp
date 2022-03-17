@@ -36,9 +36,15 @@ std::vector<Vector2> Pathfinder::GetPath(Vector2 begin, Vector2 end)
 	};
 
 	// Okay now let's do it
-	Node* startNode = GetNode(GetObjectAtPosition(begin));
-	Node* endNode = GetNode(GetObjectAtPosition(end));
-	if (startNode == endNode)
+	GameObject* startObj = GetObjectAtPosition(begin);
+	if (startObj == nullptr) return std::vector<Vector2>();
+	Node* startNode = GetNode(startObj);
+
+	GameObject* endObj = GetObjectAtPosition(end);
+	if (endObj == nullptr) return std::vector<Vector2>();
+	Node* endNode = GetNode(endObj);
+
+	if (startNode == endNode || endNode->m_obj->m_collisionType == CT_Block)
 		return std::vector<Vector2>();
 
 	// Priority queue so we always get the one with the lowest fCost when we pop
@@ -166,7 +172,16 @@ std::vector<GameObject*> Pathfinder::GetAdjacentTiles(GameObject* tile)
 
 GameObject* Pathfinder::GetObjectAtPosition(Vector2 pos)
 {
-	return m_tilemap[(int)pos.x / TILE_SIZE][(int)pos.y / TILE_SIZE];
+	int x = (int)pos.x / TILE_SIZE;
+	int y = (int)pos.y / TILE_SIZE;
+
+	if (x < 0 || x > m_tilemap.size() - 1)
+		return nullptr;
+
+	if (y < 0 || y > m_tilemap[0].size() - 1)
+		return nullptr;
+
+	return m_tilemap[x][y];
 }
 
 void Pathfinder::Node::DeriveHeuristics(Node* start, Node* end)

@@ -27,9 +27,8 @@ public:
 	void Update(float deltaTime);
 	void Render();
 
-	Player* m_player;
-
 	std::vector<GameObject*> GetObjects() { return m_objects; }
 	std::vector<Cat*> GetCats() { return m_cats; }
 	GameObject* CreateObject(int type);
+	std::vector<Cat*> GetAllCatsWithinRadius(Vector2 point, float distance);
 };

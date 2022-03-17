@@ -30,6 +30,17 @@ Level::Level(std::string levelName)
 	m_camera.w = SCREEN_WIDTH;
 }
 
+std::vector<Cat*> Level::GetAllCatsWithinRadius(Vector2 point, float distance)
+{
+	std::vector<Cat*> cats;
+	for (Cat* cat : m_cats)
+	{
+		if ((point - cat->m_position).magnitude() < distance)
+			cats.push_back(cat);
+	}
+	return cats;
+}
+
 void Level::LoadObjectsFromJSON(std::string levelName)
 {
 	std::fstream file(levelName); // opening file
@@ -139,7 +150,6 @@ GameObject* Level::CreateObject(int type)
 	{
 	case (Obj_Player):
 		newObject = new Player(type);
-		m_player = (Player*)newObject;
 		break;
 	default:
 		newObject = new GameObject(type);

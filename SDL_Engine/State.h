@@ -8,7 +8,10 @@ enum States
 {
 	STATE_NONE,
 	STATE_FOLLOWPLAYER,
-	STATE_WANDER
+	STATE_WANDER,
+	STATE_PURR,
+	STATE_HIDE,
+	STATE_GROWL
 };
 
 class State
@@ -25,7 +28,6 @@ public:
 
 class State_FollowPlayer : public State
 {
-	std::vector<Vector2> m_path;
 public:
 	int m_type;
 	State_FollowPlayer() : m_type(STATE_FOLLOWPLAYER) {}
@@ -43,6 +45,44 @@ public:
 	int m_type;
 	State_Wander() : m_type(STATE_WANDER), m_moveTimer(0.0f) {}
 	~State_Wander() {}
+
+	virtual void Enter(Cat* cat);
+	virtual void Exit(Cat* cat);
+	virtual void Update(float dt, Cat* cat);
+};
+
+class State_Purr : public State
+{
+public:
+	int m_type;
+	State_Purr() : m_type(STATE_PURR) {}
+	~State_Purr() {}
+
+	virtual void Enter(Cat* cat);
+	virtual void Exit(Cat* cat);
+	virtual void Update(float dt, Cat* cat);
+};
+
+class State_Hide : public State
+{
+public:
+	int m_type;
+	State_Hide() : m_type(STATE_HIDE) {}
+	~State_Hide() {}
+
+	virtual void Enter(Cat* cat);
+	virtual void Exit(Cat* cat);
+	virtual void Update(float dt, Cat* cat);
+};
+
+class State_Growl : public State
+{
+	Cat* m_target;
+	Cat* m_lastTarget;
+public:
+	int m_type;
+	State_Growl() : m_type(STATE_GROWL), m_target(nullptr), m_lastTarget(nullptr) {}
+	~State_Growl() {}
 
 	virtual void Enter(Cat* cat);
 	virtual void Exit(Cat* cat);
