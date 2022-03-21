@@ -1,0 +1,2108 @@
+{
+  "LevelData": [
+    {
+      "Type": "WallHigher",
+      "Position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "Type": "WallHigher",
+      "Position": {
+        "x": 32,
+        "y": 0
+      }
+    },
+    {
+      "Type": "WallHigher",
+      "Position": {
+        "x": 64,
+        "y": 0
+      }
+    },
+    {
+      "Type": "WallHigher",
+      "Position": {
+        "x": 96,
+        "y": 0
+      }
+    },
+    {
+      "Type": "WallHigher",
+      "Position": {
+        "x": 128,
+        "y": 0
+      }
+    },
+    {
+      "Type": "WallHigher",
+      "Position": {
+        "x": 160,
+        "y": 0
+      }
+    },
+    {
+      "Type": "WallHigher",
+      "Position": {
+        "x": 192,
+        "y": 0
+      }
+    },
+    {
+      "Type": "WallHigher",
+      "Position": {
+        "x": 224,
+        "y": 0
+      }
+    },
+    {
+      "Type": "WallHigher",
+      "Position": {
+        "x": 256,
+        "y": 0
+      }
+    },
+    {
+      "Type": "WallHigher",
+      "Position": {
+        "x": 288,
+        "y": 0
+      }
+    },
+    {
+      "Type": "WallHigher",
+      "Position": {
+        "x": 320,
+        "y": 0
+      }
+    },
+    {
+      "Type": "WallHigher",
+      "Position": {
+        "x": 352,
+        "y": 0
+      }
+    },
+    {
+      "Type": "WallHigher",
+      "Position": {
+        "x": 384,
+        "y": 0
+      }
+    },
+    {
+      "Type": "WallHigher",
+      "Position": {
+        "x": 416,
+        "y": 0
+      }
+    },
+    {
+      "Type": "WallHigher",
+      "Position": {
+        "x": 448,
+        "y": 0
+      }
+    },
+    {
+      "Type": "WallHigher",
+      "Position": {
+        "x": 480,
+        "y": 0
+      }
+    },
+    {
+      "Type": "WallHigher",
+      "Position": {
+        "x": 512,
+        "y": 0
+      }
+    },
+    {
+      "Type": "WallHigher",
+      "Position": {
+        "x": 544,
+        "y": 0
+      }
+    },
+    {
+      "Type": "WallHigher",
+      "Position": {
+        "x": 576,
+        "y": 0
+      }
+    },
+    {
+      "Type": "WallHigher",
+      "Position": {
+        "x": 608,
+        "y": 0
+      }
+    },
+    {
+      "Type": "WallHigher",
+      "Position": {
+        "x": 640,
+        "y": 0
+      }
+    },
+    {
+      "Type": "Wall",
+      "Position": {
+        "x": 0,
+        "y": 32
+      }
+    },
+    {
+      "Type": "Wall",
+      "Position": {
+        "x": 32,
+        "y": 32
+      }
+    },
+    {
+      "Type": "Wall",
+      "Position": {
+        "x": 64,
+        "y": 32
+      }
+    },
+    {
+      "Type": "Wall",
+      "Position": {
+        "x": 96,
+        "y": 32
+      }
+    },
+    {
+      "Type": "Wall",
+      "Position": {
+        "x": 128,
+        "y": 32
+      }
+    },
+    {
+      "Type": "Wall",
+      "Position": {
+        "x": 160,
+        "y": 32
+      }
+    },
+    {
+      "Type": "Wall",
+      "Position": {
+        "x": 192,
+        "y": 32
+      }
+    },
+    {
+      "Type": "Wall",
+      "Position": {
+        "x": 224,
+        "y": 32
+      }
+    },
+    {
+      "Type": "Wall",
+      "Position": {
+        "x": 256,
+        "y": 32
+      }
+    },
+    {
+      "Type": "Wall",
+      "Position": {
+        "x": 288,
+        "y": 32
+      }
+    },
+    {
+      "Type": "Wall",
+      "Position": {
+        "x": 320,
+        "y": 32
+      }
+    },
+    {
+      "Type": "Wall",
+      "Position": {
+        "x": 352,
+        "y": 32
+      }
+    },
+    {
+      "Type": "Wall",
+      "Position": {
+        "x": 384,
+        "y": 32
+      }
+    },
+    {
+      "Type": "Wall",
+      "Position": {
+        "x": 416,
+        "y": 32
+      }
+    },
+    {
+      "Type": "Wall",
+      "Position": {
+        "x": 448,
+        "y": 32
+      }
+    },
+    {
+      "Type": "Wall",
+      "Position": {
+        "x": 480,
+        "y": 32
+      }
+    },
+    {
+      "Type": "Wall",
+      "Position": {
+        "x": 512,
+        "y": 32
+      }
+    },
+    {
+      "Type": "Wall",
+      "Position": {
+        "x": 544,
+        "y": 32
+      }
+    },
+    {
+      "Type": "Wall",
+      "Position": {
+        "x": 576,
+        "y": 32
+      }
+    },
+    {
+      "Type": "Wall",
+      "Position": {
+        "x": 608,
+        "y": 32
+      }
+    },
+    {
+      "Type": "Wall",
+      "Position": {
+        "x": 640,
+        "y": 32
+      }
+    },
+    {
+      "Type": "WallLower",
+      "Position": {
+        "x": 0,
+        "y": 64
+      }
+    },
+    {
+      "Type": "WallLower",
+      "Position": {
+        "x": 32,
+        "y": 64
+      }
+    },
+    {
+      "Type": "WallLower",
+      "Position": {
+        "x": 64,
+        "y": 64
+      }
+    },
+    {
+      "Type": "WallLower",
+      "Position": {
+        "x": 96,
+        "y": 64
+      }
+    },
+    {
+      "Type": "WallLower",
+      "Position": {
+        "x": 128,
+        "y": 64
+      }
+    },
+    {
+      "Type": "WallLower",
+      "Position": {
+        "x": 160,
+        "y": 64
+      }
+    },
+    {
+      "Type": "WallLower",
+      "Position": {
+        "x": 192,
+        "y": 64
+      }
+    },
+    {
+      "Type": "WallLower",
+      "Position": {
+        "x": 224,
+        "y": 64
+      }
+    },
+    {
+      "Type": "WallLower",
+      "Position": {
+        "x": 256,
+        "y": 64
+      }
+    },
+    {
+      "Type": "WallLower",
+      "Position": {
+        "x": 288,
+        "y": 64
+      }
+    },
+    {
+      "Type": "WallLower",
+      "Position": {
+        "x": 320,
+        "y": 64
+      }
+    },
+    {
+      "Type": "WallLower",
+      "Position": {
+        "x": 352,
+        "y": 64
+      }
+    },
+    {
+      "Type": "WallLower",
+      "Position": {
+        "x": 384,
+        "y": 64
+      }
+    },
+    {
+      "Type": "WallLower",
+      "Position": {
+        "x": 416,
+        "y": 64
+      }
+    },
+    {
+      "Type": "WallLower",
+      "Position": {
+        "x": 448,
+        "y": 64
+      }
+    },
+    {
+      "Type": "WallLower",
+      "Position": {
+        "x": 480,
+        "y": 64
+      }
+    },
+    {
+      "Type": "WallLower",
+      "Position": {
+        "x": 512,
+        "y": 64
+      }
+    },
+    {
+      "Type": "WallLower",
+      "Position": {
+        "x": 544,
+        "y": 64
+      }
+    },
+    {
+      "Type": "WallLower",
+      "Position": {
+        "x": 576,
+        "y": 64
+      }
+    },
+    {
+      "Type": "WallLower",
+      "Position": {
+        "x": 608,
+        "y": 64
+      }
+    },
+    {
+      "Type": "WallLower",
+      "Position": {
+        "x": 640,
+        "y": 64
+      }
+    },
+    {
+      "Type": "WoodDark",
+      "Position": {
+        "x": 0,
+        "y": 96
+      }
+    },
+    {
+      "Type": "WoodDark",
+      "Position": {
+        "x": 32,
+        "y": 96
+      }
+    },
+    {
+      "Type": "WoodDark",
+      "Position": {
+        "x": 64,
+        "y": 96
+      }
+    },
+    {
+      "Type": "WoodDark",
+      "Position": {
+        "x": 96,
+        "y": 96
+      }
+    },
+    {
+      "Type": "WoodDark",
+      "Position": {
+        "x": 128,
+        "y": 96
+      }
+    },
+    {
+      "Type": "WoodDark",
+      "Position": {
+        "x": 160,
+        "y": 96
+      }
+    },
+    {
+      "Type": "WoodDark",
+      "Position": {
+        "x": 192,
+        "y": 96
+      }
+    },
+    {
+      "Type": "WoodDark",
+      "Position": {
+        "x": 224,
+        "y": 96
+      }
+    },
+    {
+      "Type": "WoodDark",
+      "Position": {
+        "x": 256,
+        "y": 96
+      }
+    },
+    {
+      "Type": "WoodDark",
+      "Position": {
+        "x": 288,
+        "y": 96
+      }
+    },
+    {
+      "Type": "WoodDark",
+      "Position": {
+        "x": 320,
+        "y": 96
+      }
+    },
+    {
+      "Type": "WoodDark",
+      "Position": {
+        "x": 352,
+        "y": 96
+      }
+    },
+    {
+      "Type": "WoodDark",
+      "Position": {
+        "x": 384,
+        "y": 96
+      }
+    },
+    {
+      "Type": "WoodDark",
+      "Position": {
+        "x": 416,
+        "y": 96
+      }
+    },
+    {
+      "Type": "WoodDark",
+      "Position": {
+        "x": 448,
+        "y": 96
+      }
+    },
+    {
+      "Type": "WoodDark",
+      "Position": {
+        "x": 480,
+        "y": 96
+      }
+    },
+    {
+      "Type": "WoodDark",
+      "Position": {
+        "x": 512,
+        "y": 96
+      }
+    },
+    {
+      "Type": "WoodDark",
+      "Position": {
+        "x": 544,
+        "y": 96
+      }
+    },
+    {
+      "Type": "WoodDark",
+      "Position": {
+        "x": 576,
+        "y": 96
+      }
+    },
+    {
+      "Type": "WoodDark",
+      "Position": {
+        "x": 608,
+        "y": 96
+      }
+    },
+    {
+      "Type": "WoodDark",
+      "Position": {
+        "x": 640,
+        "y": 96
+      }
+    },
+    {
+      "Type": "WoodDark",
+      "Position": {
+        "x": 0,
+        "y": 128
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 32,
+        "y": 128
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 64,
+        "y": 128
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 96,
+        "y": 128
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 128,
+        "y": 128
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 160,
+        "y": 128
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 192,
+        "y": 128
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 224,
+        "y": 128
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 256,
+        "y": 128
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 288,
+        "y": 128
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 320,
+        "y": 128
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 352,
+        "y": 128
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 384,
+        "y": 128
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 416,
+        "y": 128
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 448,
+        "y": 128
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 480,
+        "y": 128
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 512,
+        "y": 128
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 544,
+        "y": 128
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 576,
+        "y": 128
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 608,
+        "y": 128
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 640,
+        "y": 128
+      }
+    },
+    {
+      "Type": "WoodDark",
+      "Position": {
+        "x": 0,
+        "y": 160
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 32,
+        "y": 160
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 64,
+        "y": 160
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 96,
+        "y": 160
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 128,
+        "y": 160
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 160,
+        "y": 160
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 192,
+        "y": 160
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 224,
+        "y": 160
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 256,
+        "y": 160
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 288,
+        "y": 160
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 320,
+        "y": 160
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 352,
+        "y": 160
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 384,
+        "y": 160
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 416,
+        "y": 160
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 448,
+        "y": 160
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 480,
+        "y": 160
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 512,
+        "y": 160
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 544,
+        "y": 160
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 576,
+        "y": 160
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 608,
+        "y": 160
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 640,
+        "y": 160
+      }
+    },
+    {
+      "Type": "WoodDark",
+      "Position": {
+        "x": 0,
+        "y": 192
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 32,
+        "y": 192
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 64,
+        "y": 192
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 96,
+        "y": 192
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 128,
+        "y": 192
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 160,
+        "y": 192
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 192,
+        "y": 192
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 224,
+        "y": 192
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 256,
+        "y": 192
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 288,
+        "y": 192
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 320,
+        "y": 192
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 352,
+        "y": 192
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 384,
+        "y": 192
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 416,
+        "y": 192
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 448,
+        "y": 192
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 480,
+        "y": 192
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 512,
+        "y": 192
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 544,
+        "y": 192
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 576,
+        "y": 192
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 608,
+        "y": 192
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 640,
+        "y": 192
+      }
+    },
+    {
+      "Type": "WoodDark",
+      "Position": {
+        "x": 0,
+        "y": 224
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 32,
+        "y": 224
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 64,
+        "y": 224
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 96,
+        "y": 224
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 128,
+        "y": 224
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 160,
+        "y": 224
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 192,
+        "y": 224
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 224,
+        "y": 224
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 256,
+        "y": 224
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 288,
+        "y": 224
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 320,
+        "y": 224
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 352,
+        "y": 224
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 384,
+        "y": 224
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 416,
+        "y": 224
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 448,
+        "y": 224
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 480,
+        "y": 224
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 512,
+        "y": 224
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 544,
+        "y": 224
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 576,
+        "y": 224
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 608,
+        "y": 224
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 640,
+        "y": 224
+      }
+    },
+    {
+      "Type": "WoodDark",
+      "Position": {
+        "x": 0,
+        "y": 256
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 32,
+        "y": 256
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 64,
+        "y": 256
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 96,
+        "y": 256
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 128,
+        "y": 256
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 160,
+        "y": 256
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 192,
+        "y": 256
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 224,
+        "y": 256
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 256,
+        "y": 256
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 288,
+        "y": 256
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 320,
+        "y": 256
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 352,
+        "y": 256
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 384,
+        "y": 256
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 416,
+        "y": 256
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 448,
+        "y": 256
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 480,
+        "y": 256
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 512,
+        "y": 256
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 544,
+        "y": 256
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 576,
+        "y": 256
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 608,
+        "y": 256
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 640,
+        "y": 256
+      }
+    },
+    {
+      "Type": "WoodDark",
+      "Position": {
+        "x": 0,
+        "y": 288
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 32,
+        "y": 288
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 64,
+        "y": 288
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 96,
+        "y": 288
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 128,
+        "y": 288
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 160,
+        "y": 288
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 192,
+        "y": 288
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 224,
+        "y": 288
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 256,
+        "y": 288
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 288,
+        "y": 288
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 320,
+        "y": 288
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 352,
+        "y": 288
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 384,
+        "y": 288
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 416,
+        "y": 288
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 448,
+        "y": 288
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 480,
+        "y": 288
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 512,
+        "y": 288
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 544,
+        "y": 288
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 576,
+        "y": 288
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 608,
+        "y": 288
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 640,
+        "y": 288
+      }
+    },
+    {
+      "Type": "WoodDark",
+      "Position": {
+        "x": 0,
+        "y": 320
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 32,
+        "y": 320
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 64,
+        "y": 320
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 96,
+        "y": 320
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 128,
+        "y": 320
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 160,
+        "y": 320
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 192,
+        "y": 320
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 224,
+        "y": 320
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 256,
+        "y": 320
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 288,
+        "y": 320
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 320,
+        "y": 320
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 352,
+        "y": 320
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 384,
+        "y": 320
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 416,
+        "y": 320
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 448,
+        "y": 320
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 480,
+        "y": 320
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 512,
+        "y": 320
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 544,
+        "y": 320
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 576,
+        "y": 320
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 608,
+        "y": 320
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 640,
+        "y": 320
+      }
+    },
+    {
+      "Type": "WoodDark",
+      "Position": {
+        "x": 0,
+        "y": 352
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 32,
+        "y": 352
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 64,
+        "y": 352
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 96,
+        "y": 352
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 128,
+        "y": 352
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 160,
+        "y": 352
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 192,
+        "y": 352
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 224,
+        "y": 352
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 256,
+        "y": 352
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 288,
+        "y": 352
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 320,
+        "y": 352
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 352,
+        "y": 352
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 384,
+        "y": 352
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 416,
+        "y": 352
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 448,
+        "y": 352
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 480,
+        "y": 352
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 512,
+        "y": 352
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 544,
+        "y": 352
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 576,
+        "y": 352
+      }
+    },
+    {
+      "Type": "Wood",
+      "Position": {
+        "x": 608,
+        "y": 352
+      }
+    },
+    {
+      "Type": "Blocker",
+      "Position": {
+        "x": -32,
+        "y": 64
+      }
+    },
+    {
+      "Type": "Blocker",
+      "Position": {
+        "x": -32,
+        "y": 96
+      }
+    },
+    {
+      "Type": "Blocker",
+      "Position": {
+        "x": -32,
+        "y": 128
+      }
+    },
+    {
+      "Type": "Blocker",
+      "Position": {
+        "x": -32,
+        "y": 160
+      }
+    },
+    {
+      "Type": "Blocker",
+      "Position": {
+        "x": -32,
+        "y": 192
+      }
+    },
+    {
+      "Type": "Blocker",
+      "Position": {
+        "x": -32,
+        "y": 224
+      }
+    },
+    {
+      "Type": "Blocker",
+      "Position": {
+        "x": -32,
+        "y": 256
+      }
+    },
+    {
+      "Type": "Blocker",
+      "Position": {
+        "x": -32,
+        "y": 288
+      }
+    },
+    {
+      "Type": "Blocker",
+      "Position": {
+        "x": -32,
+        "y": 320
+      }
+    },
+    {
+      "Type": "Blocker",
+      "Position": {
+        "x": -32,
+        "y": 352
+      }
+    },
+    {
+      "Type": "Blocker",
+      "Position": {
+        "x": 640,
+        "y": 64
+      }
+    },
+    {
+      "Type": "Blocker",
+      "Position": {
+        "x": 640,
+        "y": 96
+      }
+    },
+    {
+      "Type": "Blocker",
+      "Position": {
+        "x": 640,
+        "y": 128
+      }
+    },
+    {
+      "Type": "Blocker",
+      "Position": {
+        "x": 640,
+        "y": 160
+      }
+    },
+    {
+      "Type": "Blocker",
+      "Position": {
+        "x": 640,
+        "y": 192
+      }
+    },
+    {
+      "Type": "Blocker",
+      "Position": {
+        "x": 640,
+        "y": 224
+      }
+    },
+    {
+      "Type": "Blocker",
+      "Position": {
+        "x": 640,
+        "y": 256
+      }
+    },
+    {
+      "Type": "Blocker",
+      "Position": {
+        "x": 640,
+        "y": 288
+      }
+    },
+    {
+      "Type": "Blocker",
+      "Position": {
+        "x": 640,
+        "y": 320
+      }
+    },
+    {
+      "Type": "Blocker",
+      "Position": {
+        "x": 640,
+        "y": 352
+      }
+    },
+    {
+      "Type": "Blocker",
+      "Position": {
+        "x": 0,
+        "y": 384
+      }
+    },
+    {
+      "Type": "Blocker",
+      "Position": {
+        "x": 32,
+        "y": 384
+      }
+    },
+    {
+      "Type": "Blocker",
+      "Position": {
+        "x": 64,
+        "y": 384
+      }
+    },
+    {
+      "Type": "Blocker",
+      "Position": {
+        "x": 96,
+        "y": 384
+      }
+    },
+    {
+      "Type": "Blocker",
+      "Position": {
+        "x": 128,
+        "y": 384
+      }
+    },
+    {
+      "Type": "Blocker",
+      "Position": {
+        "x": 160,
+        "y": 384
+      }
+    },
+    {
+      "Type": "Blocker",
+      "Position": {
+        "x": 192,
+        "y": 384
+      }
+    },
+    {
+      "Type": "Blocker",
+      "Position": {
+        "x": 224,
+        "y": 384
+      }
+    },
+    {
+      "Type": "Blocker",
+      "Position": {
+        "x": 256,
+        "y": 384
+      }
+    },
+    {
+      "Type": "Blocker",
+      "Position": {
+        "x": 288,
+        "y": 384
+      }
+    },
+    {
+      "Type": "Blocker",
+      "Position": {
+        "x": 320,
+        "y": 384
+      }
+    },
+    {
+      "Type": "Blocker",
+      "Position": {
+        "x": 352,
+        "y": 384
+      }
+    },
+    {
+      "Type": "Blocker",
+      "Position": {
+        "x": 384,
+        "y": 384
+      }
+    },
+    {
+      "Type": "Blocker",
+      "Position": {
+        "x": 416,
+        "y": 384
+      }
+    },
+    {
+      "Type": "Blocker",
+      "Position": {
+        "x": 448,
+        "y": 384
+      }
+    },
+    {
+      "Type": "Blocker",
+      "Position": {
+        "x": 480,
+        "y": 384
+      }
+    },
+    {
+      "Type": "Blocker",
+      "Position": {
+        "x": 512,
+        "y": 384
+      }
+    },
+    {
+      "Type": "Blocker",
+      "Position": {
+        "x": 544,
+        "y": 384
+      }
+    },
+    {
+      "Type": "Blocker",
+      "Position": {
+        "x": 576,
+        "y": 384
+      }
+    },
+    {
+      "Type": "Blocker",
+      "Position": {
+        "x": 608,
+        "y": 384
+      }
+    },
+    {
+      "Type": "WelcomeMat",
+      "Position": {
+        "x": 0,
+        "y": 320
+      }
+    },
+    {
+      "Type": "Cat",
+      "Name": "Simba",
+      "Personality": {
+        "Openness": 0.75,
+        "Conscientiousness": 0.1,
+        "Extroversion": 0.8,
+        "Agreeableness": 0.3,
+        "Neuroticism": 0.01
+      },
+      "Position": {
+        "x": 64,
+        "y": 200
+      }
+    },
+    {
+      "Type": "Cat",
+      "Name": "Geraldine",
+      "Personality": {
+        "Openness": 0.4,
+        "Conscientiousness": 0.9,
+        "Extroversion": 0.4,
+        "Agreeableness": 0.7,
+        "Neuroticism": 0.2
+      },
+      "Position": {
+        "x": 96,
+        "y": 120
+      }
+    },
+    {
+      "Type": "Cat",
+      "Name": "Jake",
+      "Personality": {
+        "Openness": 0.9,
+        "Conscientiousness": 0.1,
+        "Extroversion": 0.5,
+        "Agreeableness": 0.7,
+        "Neuroticism": 0.8
+      },
+      "Position": {
+        "x": 200,
+        "y": 120
+      }
+    },
+    {
+      "Type": "Cat",
+      "Name": "Luna",
+      "Personality": {
+        "Openness": 0.1,
+        "Conscientiousness": 0.1,
+        "Extroversion": 0.1,
+        "Agreeableness": 0.1,
+        "Neuroticism": 0.9
+      },
+      "Position": {
+        "x": 264,
+        "y": 184
+      }
+    }
+  ]
+}

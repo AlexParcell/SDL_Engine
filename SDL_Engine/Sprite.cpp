@@ -9,7 +9,8 @@ extern SDL_Renderer* g_renderer;
 Sprite::Sprite(std::string filepath)
 	: m_texture(nullptr)
 {
-	SDL_Surface* surface = IMG_Load(filepath.c_str());
+	std::string appendedFilepath = std::string("Art/") + filepath;
+	SDL_Surface* surface = IMG_Load(appendedFilepath.c_str());
 	if (surface != NULL)
 	{
 		m_texture = SDL_CreateTextureFromSurface(g_renderer, surface);

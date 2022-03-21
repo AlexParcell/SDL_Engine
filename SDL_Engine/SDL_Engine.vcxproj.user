@@ -5,4 +5,9 @@
 $(LocalDebuggerEnvironment)</LocalDebuggerEnvironment>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LocalDebuggerEnvironment>PATH=;$(ProjectDir)SDL2-2.0.18\lib\x64;$(ProjectDir)SDL2_image-2.0.5\lib\x64;$(ProjectDir)SDL2_mixer-2.0.4\lib\x64;$(ProjectDir)SDL2_ttf-2.0.15\lib\x64;%PATH%;
+$(LocalDebuggerEnvironment)</LocalDebuggerEnvironment>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+  </PropertyGroup>
 </Project>
